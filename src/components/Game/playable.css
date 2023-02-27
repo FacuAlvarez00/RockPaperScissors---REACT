@@ -11,3 +11,7 @@
 .dd{
     display: flex;
 }
+
+.options_container{
+    display: flex;
+}
