@@ -34,8 +34,10 @@ const Options: React.FC<props> = ({ setMyChoice }) => {
 
   const setChoice = (choice: any) => {
     setMyChoice(choice)
-    /* setMyChoice(e.target.dataset.id) */
+    console.log(choice)
   }
+
+
 
 
   return (

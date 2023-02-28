@@ -30,15 +30,17 @@ const choices = [
 
 type props = {
     myChoice: any;
+    points: any;
+    setPoints: any;
 }
 
 
-const Game: React.FC<props> = ({ myChoice }) => {
+const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
 
     /* const [userChoice, setUserChoice] = useState<any>(); */
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
-    const [points, setPoints] = useState<any>(0);
+    /* const [points, setPoints] = useState<any>(0); */
     const [disabled, setDisabled] = useState<any>();
     const [showGame, setShowGame] = useState<any>(false);
     const [counter, setCounter] = useState(1);
@@ -50,33 +52,42 @@ const Game: React.FC<props> = ({ myChoice }) => {
     }, [points]);
 
 
-
-    const randomChoice = () => {
-        const houseChoice = choices[Math.floor(Math.random() * choices.length)];
-        return houseChoice;
-    };
-
-
-    const getResult = (userChoice: any, computerChoice: any) => {
+    /* const getResult = (userChoice: any, computerChoice: any) => {
         if (userChoice === computerChoice) {
             return 0;
         }
     }
+ */
 
-   
+    
+   /*  const randomChoice = () => {
+        const houseChoice = choices[Math.floor(Math.random() * choices.length)];
+        return houseChoice;
+    };
+
+ */
+    const newHousePick = () => {
+    setComputerChoice(choices[Math.floor(Math.random() * choices.length)]);
+
+    };
+
+      useEffect(() => {
+        newHousePick();
+      }, []);
+    
         const winnerCheck = () => {
-            const newComputerAction = randomChoice();
-            setComputerChoice(newComputerAction);
+        /*     const newComputerAction = randomChoice();
+            setComputerChoice(newComputerAction); */
             setDisabled(true)
             setShowGame(true)
             if (
-                (myChoice.type === "Rock" && newComputerAction.type === "Scissors") ||
-                (myChoice.type === "Paper" && newComputerAction.type === "Rock") ||
-                (myChoice.type === "Scissors" && newComputerAction.type === "Paper")
+                (myChoice.type === "Rock" && computerChoice.type === "Scissors") ||
+                (myChoice.type === "Paper" && computerChoice.type === "Rock") ||
+                (myChoice.type === "Scissors" && computerChoice.type === "Paper")
             ) {
                 setResult('You won!');
                 setPoints(points + 1);
-            } else if (myChoice.id === newComputerAction.id) {
+            } else if (myChoice.id === computerChoice.id) {
                 setResult('DRAW');
             } else {
                 setResult('You lost');
@@ -130,20 +141,21 @@ const Game: React.FC<props> = ({ myChoice }) => {
             <Link to="/">Home</Link>
             <div>
 
-                <h3>Points: {points}</h3>
+              {/*   <h3>Points: {points}</h3> */}
 
                 <div className='dd'>
-                    
+
+                <h1>You choose:</h1>
+
                     {computerChoice ? (
                         <>
-                        <h1>You choose: {myChoice && myChoice.type}</h1>
                         <img className='icons' src={myChoice && myChoice.img}></img>
                         </>
                     ) : null}
                 </div>
 
                 <div className='dd'>
-                    <h1>The house choose: {computerChoice && computerChoice.type}</h1>
+                    <h1>The house choose:</h1>
                     {computerChoice ? (
                         <img className='icons' src={computerChoice && computerChoice.img}></img>
                     ) : null}

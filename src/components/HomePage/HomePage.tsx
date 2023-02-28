@@ -7,6 +7,8 @@ type props = {
 }
 
 
+
+
 const HomePage = ({points}: props) => {
   return (
     <div>
