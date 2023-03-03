@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 
 type props = {
-    points: number
+    points: any
 }
 
 const Header: React.FC<props> = (({points}) => {

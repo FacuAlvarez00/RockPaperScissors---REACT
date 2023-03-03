@@ -41,7 +41,7 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
     /* const [points, setPoints] = useState<any>(0); */
-    const [disabled, setDisabled] = useState<any>();
+    const [disabled, setDisabled] = useState<any>(true);
     const [showGame, setShowGame] = useState<any>(false);
     const [counter, setCounter] = useState(1);
 
@@ -74,11 +74,14 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
       useEffect(() => {
         newHousePick();
       }, []);
-    
+
+
+ 
+        
         const winnerCheck = () => {
         /*     const newComputerAction = randomChoice();
             setComputerChoice(newComputerAction); */
-            setDisabled(true)
+            setDisabled(false)
             setShowGame(true)
             if (
                 (myChoice.type === "Rock" && computerChoice.type === "Scissors") ||
@@ -93,15 +96,6 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
                 setResult('You lost');
                 setPoints(points - 1);
     
-                /*      setTimeout(() => {
-                         setComputerChoice(randomChoice);
-                       }, 1500);
-                   
-                       setTimeout(() => {
-                         setResult(getResult(choice, randomChoice));
-                       }, 3000); */
-    
-                /*    clearTimeout(); */
             }
         };
 
@@ -113,8 +107,10 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
               counter > 0 ? 
 
               setInterval(() => {setCounter(counter - 1);}, 1000)
+              
 
                 : winnerCheck();
+                
         
             return () => {
               clearInterval(timer);
@@ -128,17 +124,22 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
         myChoice(null)
         setComputerChoice(null);
         setResult(null);
-        setDisabled(false);
+      
     };
 
  */
 
 
 
-
     return (
         <>
-            <Link to="/">Home</Link>
+           {disabled? (
+  null
+):
+<Link to="/">
+    <button>Home</button>
+  </Link>}
+
             <div>
 
               {/*   <h3>Points: {points}</h3> */}
@@ -147,7 +148,7 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
 
                 <h1>You choose:</h1>
 
-                    {computerChoice ? (
+                    {counter === 0 ? (
                         <>
                         <img className='icons' src={myChoice && myChoice.img}></img>
                         </>
@@ -156,15 +157,14 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
 
                 <div className='dd'>
                     <h1>The house choose:</h1>
-                    {computerChoice ? (
+                    {counter === 0 ? (
                         <img className='icons' src={computerChoice && computerChoice.img}></img>
                     ) : null}
                 </div>
 
                 <h3>{result}</h3>
 
-                {computerChoice ? 
-
+                {counter === 0 ? 
                 <Link to="/">
                     <button>Play again</button>
                 </Link>
@@ -197,6 +197,19 @@ export default Game;
             ))}
 
            */}
+
+
+
+           
+                /*      setTimeout(() => {
+                         setComputerChoice(randomChoice);
+                       }, 1500);
+                   
+                       setTimeout(() => {
+                         setResult(getResult(choice, randomChoice));
+                       }, 3000); */
+    
+                /*    clearTimeout(); */
 
 
 

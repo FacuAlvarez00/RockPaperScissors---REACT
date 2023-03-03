@@ -7,19 +7,21 @@ import Options from './components/Game/Options';
 import Header from './components/Game/Header';
 
 
-
+const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]");
+const getUserChoiceFromStorage = JSON.parse(localStorage.getItem("userChoice") || "[]")
 
 
 function App() {
+  
+  const [myChoice, setMyChoice] = useState(getUserChoiceFromStorage);
+  const [points, setPoints] = useState(getScoreFromStorage); 
 
-  const [myChoice, setMyChoice] = useState(null);
-  const [points, setPoints] = useState<any>(0); 
-
-/*   useEffect(() => {
-    console.log(points);
+  useEffect(() => {
+    localStorage.setItem("score", JSON.stringify(points))
+    localStorage.setItem("userChoice", JSON.stringify(myChoice))
   }, [points]);
- */
-
+ 
+  
 
   return (
     <>
@@ -30,12 +32,7 @@ function App() {
         <Route path="/game" element={<Game myChoice={myChoice} points={points} setPoints={setPoints} />}/>
       </Routes>
     </BrowserRouter>
-    
-   
- 
     </>
- 
-  
 
   );
 }
