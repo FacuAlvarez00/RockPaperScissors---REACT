@@ -4,11 +4,13 @@ import Game from './components/Game/Game';
 import HomePage from './components/HomePage/HomePage';
 import { useEffect, useState } from 'react';
 import Options from './components/Game/Options';
+
 import Header from './components/Game/Header';
+import NavBar from './components/NavBar/NavBar';
 
 
 const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]");
-const getUserChoiceFromStorage = JSON.parse(localStorage.getItem("userChoice") || "[]")
+const getUserChoiceFromStorage = JSON.parse(localStorage.getItem("userChoice") || "[]") 
 
 
 function App() {
@@ -20,15 +22,16 @@ function App() {
     localStorage.setItem("score", JSON.stringify(points))
     localStorage.setItem("userChoice", JSON.stringify(myChoice))
   }, [points]);
- 
+  
   
 
   return (
     <>
     <BrowserRouter>
-      <Header points={points}/>
+      <NavBar/>
+   
       <Routes>
-        <Route path="/" element={<Options setMyChoice={setMyChoice}/>}/>
+        <Route path="/" element={<HomePage points={points} setMyChoice={setMyChoice}/>}/>
         <Route path="/game" element={<Game myChoice={myChoice} points={points} setPoints={setPoints} />}/>
       </Routes>
     </BrowserRouter>

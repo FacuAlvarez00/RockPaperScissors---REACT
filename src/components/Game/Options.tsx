@@ -27,6 +27,7 @@ const choices = [
 
 type props = {
   setMyChoice: any
+  
 }
 
 

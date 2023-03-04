@@ -4,6 +4,7 @@ import scissors from '../../assets/icons/scissors.svg'
 import rock from '../../assets/icons/rock.svg'
 import { Link } from 'react-router-dom';
 import "./playable.css"
+import Header from './Header';
 import Options from './Options'
 import HomePage from '../HomePage/HomePage';
 
@@ -45,7 +46,7 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
     const [showGame, setShowGame] = useState<any>(false);
     const [counter, setCounter] = useState(1);
 
-
+ 
 
 
     useEffect(() => {
@@ -94,7 +95,7 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
                 setResult('DRAW');
             } else {
                 setResult('You lost');
-                setPoints(points - 1);
+                setPoints(points - 1); 
     
             }
         };
@@ -141,6 +142,7 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
   </Link>}
 
             <div>
+                <Header points={points}/>
 
               {/*   <h3>Points: {points}</h3> */}
 
