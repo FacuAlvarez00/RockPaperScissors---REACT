@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserAuth } from '../../context/AuthContext'
+
 
 const Navbar = () => {
-  return (
+
+    const {user} = UserAuth()
+
+
+      return (
 
         <div>
 
@@ -21,6 +27,17 @@ const Navbar = () => {
             <Link to={"/about"}>
                 <li className=''>About</li>
             </Link>
+
+
+            {user? (
+                <li>{user.displayName}</li>
+            )
+            : (
+                <Link to={"/signin"}>
+                    <li className=''>Sign In!</li>
+                </Link>
+            )
+            }
         </ul>
         </div>
         
