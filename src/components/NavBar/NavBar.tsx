@@ -1,12 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { UserAuth } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 
 const Navbar = () => {
 
-    const {user} = UserAuth()
+    const {user, logOut, handleSignOut} = UserAuth()
 
+/*     const handleSignOut = async () => {
+        try {
+            await logOut()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+ */
+
+/*     useEffect ( () => {
+        
+
+
+    }, [])
+ */
 
       return (
 
@@ -29,12 +45,15 @@ const Navbar = () => {
             </Link>
 
 
-            {user? (
-                <li>{user.displayName}</li>
+            {user.displayName ? (
+                <Link to="/account">
+                     <li>Account</li>
+                </Link>
+               
             )
             : (
                 <Link to={"/signin"}>
-                    <li className=''>Sign In!</li>
+                    <li className=''>Sign In</li>
                 </Link>
             )
             }

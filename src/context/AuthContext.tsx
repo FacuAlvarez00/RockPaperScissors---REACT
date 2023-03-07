@@ -3,12 +3,14 @@ import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from
 import {auth} from "../firebase"
 
 
+
 interface IAuthContext {
 
   suma: number;
   googleSignIn: any
   logOut: any
   user: any
+  handleSignOut: any
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
@@ -33,9 +35,17 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
 
     const logOut = () => {
       signOut(auth)
-
-
     }
+
+    const handleSignOut = async () => {
+      try {
+          await logOut()
+      } catch (error) {
+          console.log(error)
+      }
+  }
+
+
 
     useEffect( () => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
@@ -50,7 +60,7 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
 
 
 
-    return <AuthContext.Provider value={{ suma, googleSignIn, logOut, user }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ suma, googleSignIn, logOut, user, handleSignOut }}>{children}</AuthContext.Provider>;
 };
 
 export const UserAuth = () => {

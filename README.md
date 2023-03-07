@@ -48,3 +48,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 Hacer:
 -Mover logica afuera de app (usar homepage), hacer que points no se vea siempre.
+-Arreglar error en firebase que me dice que los valores del context no existen.

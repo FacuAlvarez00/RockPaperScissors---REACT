@@ -4,7 +4,10 @@ import HomePage from './components/HomePage/HomePage';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import { AuthContextProvider } from './context/AuthContext';
-import SignIn from './storage/SignIn';
+import SignIn from './components/Acount/SignIn';
+import Account from './components/Acount/Account';
+import Protected from './components/AutoRedirect/AutoRedirect';
+
 
 
 const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]");
@@ -33,6 +36,16 @@ function App() {
             <Route path="/" element={<HomePage points={points} setMyChoice={setMyChoice} />} />
             <Route path="/game" element={<Game myChoice={myChoice} points={points} setPoints={setPoints} />} />
             <Route path="/signin" element={<SignIn/>}/>
+
+            <Route
+            path='/account'
+            element={
+              <Protected>
+                <Account />
+              </Protected>
+            }
+          />
+           
           </Routes>
         </AuthContextProvider>
       </BrowserRouter>
