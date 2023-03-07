@@ -45,7 +45,7 @@ const Navbar = () => {
             </Link>
 
 
-            {user.displayName ? (
+            {user ?  (
                 <Link to="/account">
                      <li>Account</li>
                 </Link>

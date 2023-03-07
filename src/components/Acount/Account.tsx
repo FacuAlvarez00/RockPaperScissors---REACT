@@ -7,13 +7,13 @@ const Account = () => {
 
     const {user, logOut, handleSignOut} = UserAuth()
     console.log(user)
-
+/* 
     const userData = {
         google_username: user.displayName,
        
 
     }
-       
+        */
 
 
     

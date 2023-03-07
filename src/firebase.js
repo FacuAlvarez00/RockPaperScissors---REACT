@@ -23,15 +23,15 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app)
 
-/* const {user, points} = UserAuth()  */
+/*  const {user, points} = UserAuth()  
 
-/* if (user && points != null ){ */
+ if (user && points != null ){ 
   
 
 const data = {
   campo1: 'valor1',
   campo2: 'valor2',
-  /* uid: user.reloadUserInfo.localId */
+  uid: user.reloadUserInfo.localId 
 
 
 };
@@ -44,5 +44,6 @@ async function createOrder(order) {
 
 
 
-/* } */
+} 
 
+ */
