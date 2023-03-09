@@ -3,10 +3,11 @@ import Game from './components/Game/Game';
 import HomePage from './components/HomePage/HomePage';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
-import { AuthContextProvider } from './context/AuthContext';
+import { AuthContextProvider, UserAuth } from './context/AuthContext';
 import SignIn from './components/Acount/SignIn';
 import Account from './components/Acount/Account';
 import Protected from './components/AutoRedirect/AutoRedirect';
+import { getOrderScore } from './firebase';
 
 
 
@@ -15,6 +16,11 @@ const getUserChoiceFromStorage = JSON.parse(localStorage.getItem("userChoice") |
 
 
 function App() {
+
+
+
+ 
+
 
   const [myChoice, setMyChoice] = useState(getUserChoiceFromStorage);
   const [points, setPoints] = useState(getScoreFromStorage);
@@ -34,7 +40,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<HomePage points={points} setMyChoice={setMyChoice} />} />
-            <Route path="/game" element={<Game myChoice={myChoice} points={points} setPoints={setPoints} />} />
+            <Route path="/game" element={<Game myChoice={myChoice} points={points} setPoints={setPoints} scoreFromDatabase={""} userAlreadyPlayed={false} />} />
             <Route path="/signin" element={<SignIn/>}/>
 
             <Route
@@ -45,7 +51,6 @@ function App() {
               </Protected>
             }
           />
-           
           </Routes>
         </AuthContextProvider>
       </BrowserRouter>

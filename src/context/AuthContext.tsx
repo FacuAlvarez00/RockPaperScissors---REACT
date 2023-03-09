@@ -5,12 +5,12 @@ import {auth} from "../firebase"
 
 
 interface IAuthContext {
-
-  suma: number;
   googleSignIn: any
   logOut: any
   user: any
   handleSignOut: any
+  points: any
+  setPoints: any
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
@@ -19,14 +19,24 @@ interface IAuthContextProviderProps {
   children: ReactNode;
 }
 
-const suma = 2+2
+const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]");
+
 
 export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
 
   const [user, setUser] = useState({})
+  const [points, setPoints] = useState(getScoreFromStorage);
 
 
 
+  useEffect(() => {
+    localStorage.setItem("score", JSON.stringify(points))
+ 
+  }, [points]);
+
+
+
+  
 
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider()
@@ -44,8 +54,10 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
           console.log(error)
       }
   }
+  
 
 
+    
 
     useEffect( () => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
@@ -60,7 +72,7 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
 
 
 
-    return <AuthContext.Provider value={{ suma, googleSignIn, logOut, user, handleSignOut }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ googleSignIn, logOut, user, handleSignOut, points, setPoints }}>{children}</AuthContext.Provider>;
 };
 
 export const UserAuth = () => {

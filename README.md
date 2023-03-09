@@ -48,4 +48,10 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 Hacer:
 -Mover logica afuera de app (usar homepage), hacer que points no se vea siempre.
+
+
 -Arreglar error en firebase que me dice que los valores del context no existen.
+necesito hacer la logica del envio de docs en el context directamente, importo la funcion desde firebasejs
+
+Hacer que los puntos traidos de firestore se usen para dar el valor inicial al estado points, buscar la manera
+de mover el estado de points al componente game. 

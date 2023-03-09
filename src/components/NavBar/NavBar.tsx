@@ -6,23 +6,8 @@ import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
-    const {user, logOut, handleSignOut} = UserAuth()
+    const {user} = UserAuth()
 
-/*     const handleSignOut = async () => {
-        try {
-            await logOut()
-        } catch (error) {
-            console.log(error)
-        }
-    }
- */
-
-/*     useEffect ( () => {
-        
-
-
-    }, [])
- */
 
       return (
 

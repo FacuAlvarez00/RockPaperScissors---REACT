@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import paper from '../../assets/icons/paper.svg'
 import scissors from '../../assets/icons/scissors.svg'
 import rock from '../../assets/icons/rock.svg'
 import { Link } from 'react-router-dom';
 import "./playable.css"
 import Header from './Header';
+import { UserAuth } from '../../context/AuthContext';
+import { createOrder, getOrderScore } from '../../firebase';
 import Options from './Options'
 import HomePage from '../HomePage/HomePage';
+import userEvent from '@testing-library/user-event';
+
 
 
 const choices = [
+    
     {
         "type": "Rock",
         "img": rock,
@@ -33,12 +38,20 @@ type props = {
     myChoice: any;
     points: any;
     setPoints: any;
+    scoreFromDatabase: any;
+    userAlreadyPlayed: boolean;
 }
+
 
 
 const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
 
+
+
+
     /* const [userChoice, setUserChoice] = useState<any>(); */
+    const [scoreFromDatabase, setScoreFromDatabase] = useState<any>(null);
+    const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(false);
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
     /* const [points, setPoints] = useState<any>(0); */
@@ -46,12 +59,27 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
     const [showGame, setShowGame] = useState<any>(false);
     const [counter, setCounter] = useState(1);
 
- 
+    const {user} = UserAuth()
+    
+    
+   /*  async function bringPointsFromDatabase(){
+        const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid);
+    }
+    */
+    async function bringPointsFromDatabase(){
+        const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid);
+        setUserAlreadyPlayed(userAlreadyPlayed);
+        setScoreFromDatabase(scoreFromDatabase);
+    }
+    
 
 
     useEffect(() => {
     }, [points]);
 
+
+    
+   
 
     /* const getResult = (userChoice: any, computerChoice: any) => {
         if (userChoice === computerChoice) {
@@ -69,16 +97,25 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
  */
     const newHousePick = () => {
     setComputerChoice(choices[Math.floor(Math.random() * choices.length)]);
-
     };
+
+    function sendInfo() {
+        const order = {
+            userinfo: user.uid,
+            googleUserName: user.displayName,
+            score: points,
+            date: new Date()
+          };
+        createOrder(order)
+        setPoints(points = 0);
+    }
+    
+
 
       useEffect(() => {
         newHousePick();
       }, []);
-
-
- 
-        
+   
         const winnerCheck = () => {
         /*     const newComputerAction = randomChoice();
             setComputerChoice(newComputerAction); */
@@ -173,6 +210,7 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
                 :
                 null
                 }
+                <button onClick={bringPointsFromDatabase}>PUSH SCORE?</button>
             </div>
         </>
     );

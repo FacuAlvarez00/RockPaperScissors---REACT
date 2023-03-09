@@ -1,8 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import {getFirestore, doc, setDoc, collection} from "firebase/firestore"
+import {getFirestore, doc, setDoc, collection, addDoc, getDoc} from "firebase/firestore"
 import { UserAuth } from "./context/AuthContext";
+
+
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -23,7 +25,8 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app)
 
-/*  const {user, points} = UserAuth()  
+/* const {user, points} = UserAuth()  
+   
 
  if (user && points != null ){ 
   
@@ -39,11 +42,41 @@ const data = {
 
 
 async function createOrder(order) {
-  
 }
 
 
 
 } 
-
  */
+
+const userAlreadyPlayed = Boolean
+
+export async function getOrderScore(uid) {
+  const orderRef = doc(db, "order", uid); // referencia al documento con el UID especificado
+
+  const docSnap = await getDoc(orderRef); // obtener el documento
+
+  let userAlreadyPlayed = false;
+  let scoreFromDatabase = null;
+
+  if (docSnap.exists()) { // verificar si el documento existe
+    console.log("entro en el if")
+    userAlreadyPlayed = true;
+    scoreFromDatabase = docSnap.data().score; // devolver el valor de la propiedad "score"
+  } 
+  return {
+    userAlreadyPlayed,
+    scoreFromDatabase
+  };
+  
+}
+
+export async function createOrder(order) {
+  const orderRef = doc(db, "order", order.userinfo);
+
+  let respuesta = await setDoc(orderRef, order);
+  console.log(respuesta, respuesta.id);
+
+  return respuesta.id;
+}
+
