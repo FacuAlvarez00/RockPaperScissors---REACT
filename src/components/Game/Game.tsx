@@ -36,65 +36,61 @@ const choices = [
 
 type props = {
     myChoice: any;
-    points: any;
-    setPoints: any;
-    scoreFromDatabase: any;
-    userAlreadyPlayed: boolean;
+   
 }
 
 
 
-const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
+
+const Game: React.FC<props> = ({ myChoice }) => {
 
 
-
-
+      
     /* const [userChoice, setUserChoice] = useState<any>(); */
-    const [scoreFromDatabase, setScoreFromDatabase] = useState<any>(null);
+   
     const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(false);
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
-    /* const [points, setPoints] = useState<any>(0); */
+    /* const [points, setPoints] = useState<any>(0);  */
     const [disabled, setDisabled] = useState<any>(true);
     const [showGame, setShowGame] = useState<any>(false);
     const [counter, setCounter] = useState(1);
 
-    const {user} = UserAuth()
+    const {user, points, setPoints} = UserAuth()
     
     
-   /*  async function bringPointsFromDatabase(){
-        const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid);
-    }
-    */
-    async function bringPointsFromDatabase(){
+  
+    async function bringPointsFromDatabase() {
+        try {
+          const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid)
+          setUserAlreadyPlayed(userAlreadyPlayed);
+          setPoints(scoreFromDatabase);
+          console.log(scoreFromDatabase) 
+          console.log(userAlreadyPlayed)
+        } catch(error) {
+          console.log("dasdasdasasdasd");
+        }
+      }
+  
+    const pointsAtZero = 0
+
+    async function enableScore(){
         const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid);
         setUserAlreadyPlayed(userAlreadyPlayed);
-        setScoreFromDatabase(scoreFromDatabase);
-    }
-    
+        setPoints(scoreFromDatabase);
+        if (userAlreadyPlayed){
+            setPoints(scoreFromDatabase);
+        }
+        else{
+            setPoints(pointsAtZero)
+        }
+      }
 
-
+ 
     useEffect(() => {
     }, [points]);
 
 
-    
-   
-
-    /* const getResult = (userChoice: any, computerChoice: any) => {
-        if (userChoice === computerChoice) {
-            return 0;
-        }
-    }
- */
-
-    
-   /*  const randomChoice = () => {
-        const houseChoice = choices[Math.floor(Math.random() * choices.length)];
-        return houseChoice;
-    };
-
- */
     const newHousePick = () => {
     setComputerChoice(choices[Math.floor(Math.random() * choices.length)]);
     };
@@ -107,7 +103,7 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
             date: new Date()
           };
         createOrder(order)
-        setPoints(points = 0);
+        setPoints(pointsAtZero);
     }
     
 
@@ -117,8 +113,6 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
       }, []);
    
         const winnerCheck = () => {
-        /*     const newComputerAction = randomChoice();
-            setComputerChoice(newComputerAction); */
             setDisabled(false)
             setShowGame(true)
             if (
@@ -127,12 +121,12 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
                 (myChoice.type === "Scissors" && computerChoice.type === "Paper")
             ) {
                 setResult('You won!');
-                setPoints(points + 1);
+                setPoints(points + 1); 
             } else if (myChoice.id === computerChoice.id) {
                 setResult('DRAW');
             } else {
                 setResult('You lost');
-                setPoints(points - 1); 
+                setPoints(points - 1);
     
             }
         };
@@ -155,19 +149,6 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
             };
           }, [counter, computerChoice]);
         
-    
-   
-
-/*     const reset = () => {
-        myChoice(null)
-        setComputerChoice(null);
-        setResult(null);
-      
-    };
-
- */
-
-
 
     return (
         <>
@@ -181,7 +162,6 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
             <div>
                 <Header points={points}/>
 
-              {/*   <h3>Points: {points}</h3> */}
 
                 <div className='dd'>
 
@@ -210,7 +190,9 @@ const Game: React.FC<props> = ({ myChoice, points, setPoints }) => {
                 :
                 null
                 }
-                <button onClick={bringPointsFromDatabase}>PUSH SCORE?</button>
+                <button onClick={bringPointsFromDatabase}>bringPointsFromDatabase</button> 
+                <button onClick={enableScore}>Enable score from db</button>
+                <button onClick={sendInfo}>Send info</button>
             </div>
         </>
     );
@@ -220,38 +202,3 @@ export default Game;
 
 
 
-
-                {/* 
-            {choices.map((choice) => (
-                <button
-
-                disabled={disabled}
-                key={choice.id}
-                onClick={() => handlePlay(choice)}>
-
-                    <img className='icons' src={choice.img}></img>
-
-                 
-
-                </button>
-            ))}
-
-           */}
-
-
-
-           
-                /*      setTimeout(() => {
-                         setComputerChoice(randomChoice);
-                       }, 1500);
-                   
-                       setTimeout(() => {
-                         setResult(getResult(choice, randomChoice));
-                       }, 3000); */
-    
-                /*    clearTimeout(); */
-
-
-
-
-            {/* <Options points={points}/> */}

@@ -3,6 +3,7 @@ import GoogleButton from 'react-google-button'
 import { useNavigate } from 'react-router-dom'
 import { UserAuth } from '../../context/AuthContext'
 
+
 const SignIn = () => {
 
 
@@ -37,7 +38,9 @@ const SignIn = () => {
     <div>
         <GoogleButton
         onClick={handleSignIn}
+      
 />
+   
       
     </div>
   )

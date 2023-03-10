@@ -11,7 +11,7 @@ import { getOrderScore } from './firebase';
 
 
 
-const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]");
+/* const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]"); */
 const getUserChoiceFromStorage = JSON.parse(localStorage.getItem("userChoice") || "[]")
 
 
@@ -20,15 +20,15 @@ function App() {
 
 
  
-
+  
 
   const [myChoice, setMyChoice] = useState(getUserChoiceFromStorage);
-  const [points, setPoints] = useState(getScoreFromStorage);
+  /* const [points, setPoints] = useState(getScoreFromStorage); */
 
   useEffect(() => {
-    localStorage.setItem("score", JSON.stringify(points))
+   /*  localStorage.setItem("score", JSON.stringify(points)) */
     localStorage.setItem("userChoice", JSON.stringify(myChoice))
-  }, [points]);
+  }, [/* points */]);
 
 
 
@@ -39,8 +39,8 @@ function App() {
         <AuthContextProvider>
           <NavBar />
           <Routes>
-            <Route path="/" element={<HomePage points={points} setMyChoice={setMyChoice} />} />
-            <Route path="/game" element={<Game myChoice={myChoice} points={points} setPoints={setPoints} scoreFromDatabase={""} userAlreadyPlayed={false} />} />
+            <Route path="/" element={<HomePage /* points={points} */ setMyChoice={setMyChoice} />} />
+            <Route path="/game" element={<Game myChoice={myChoice} /* points={points} setPoints={setPoints} */ />} />
             <Route path="/signin" element={<SignIn/>}/>
 
             <Route
