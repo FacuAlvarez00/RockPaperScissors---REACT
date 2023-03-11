@@ -60,7 +60,6 @@ export async function getOrderScore(uid) {
   let scoreFromDatabase = null;
 
   if (docSnap.exists()) { // verificar si el documento existe
-    console.log("entro en el if")
     userAlreadyPlayed = true;
     scoreFromDatabase = docSnap.data().score; // devolver el valor de la propiedad "score"
   } 

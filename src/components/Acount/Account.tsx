@@ -5,7 +5,7 @@ import SignIn from './SignIn'
 
 const Account = () => {
 
-    const {user, logOut, handleSignOut} = UserAuth()
+    const {user, logOut, handleSignOut, points} = UserAuth()
     console.log(user)
 /* 
     const userData = {
@@ -30,7 +30,7 @@ const Account = () => {
         {user? <h1>Welcome {user.displayName}</h1> : 
         <h1> You are not signed in</h1>
         }
-        <h2>Your current points are: X</h2>
+        <h2>Your current points are: {points}</h2>
         <h2>You won: X times</h2>
         <h2>You lost: X times</h2>
 

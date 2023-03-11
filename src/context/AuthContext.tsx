@@ -1,6 +1,7 @@
 import { useContext, createContext, ReactNode, useEffect, useState } from "react";
 import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
-import {auth} from "../firebase"
+import {auth, getOrderScore} from "../firebase"
+
 
 
 
@@ -55,14 +56,12 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
       }
   }
   
-
-
-    
+ 
 
     useEffect( () => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
         setUser(currentUser)
-        console.log(currentUser)
+        
       })
       return () => {
         unsubscribe()

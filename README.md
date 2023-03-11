@@ -53,5 +53,7 @@ Hacer:
 -Arreglar error en firebase que me dice que los valores del context no existen.
 necesito hacer la logica del envio de docs en el context directamente, importo la funcion desde firebasejs
 
-Hacer que los puntos traidos de firestore se usen para dar el valor inicial al estado points, buscar la manera
+-Hacer que los puntos traidos de firestore se usen para dar el valor inicial al estado points, buscar la manera
 de mover el estado de points al componente game. 
+
+-hacer que la funcion getPointsFromDatabase solo se ejecute una vez, hacer la comprobacion de si el usuario esta logueado no. No dejar que la funcion tape el funcionamiento del juego.

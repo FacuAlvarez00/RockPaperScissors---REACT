@@ -46,12 +46,15 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
 
       
-    /* const [userChoice, setUserChoice] = useState<any>(); */
+
    
-    const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(false);
+    const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(
+        localStorage.getItem("userAlreadyPlayed") === "true"
+      );
+
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
-    /* const [points, setPoints] = useState<any>(0);  */
+
     const [disabled, setDisabled] = useState<any>(true);
     const [showGame, setShowGame] = useState<any>(false);
     const [counter, setCounter] = useState(1);
@@ -60,21 +63,34 @@ const Game: React.FC<props> = ({ myChoice }) => {
     
     
   
-    async function bringPointsFromDatabase() {
-        try {
-          const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid)
-          setUserAlreadyPlayed(userAlreadyPlayed);
-          setPoints(scoreFromDatabase);
-          console.log(scoreFromDatabase) 
-          console.log(userAlreadyPlayed)
-        } catch(error) {
-          console.log("dasdasdasasdasd");
-        }
+useEffect(() => {
+    async function fetchData() {
+      try {
+        const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(
+          user.uid
+        );
+        setUserAlreadyPlayed(userAlreadyPlayed);
+        setPoints(scoreFromDatabase);
+        console.log("info traida de db");
+      } catch (error) {
+        console.log("error");
       }
+    }
   
+    if (!userAlreadyPlayed) {
+      fetchData();
+      setUserAlreadyPlayed(true);
+      localStorage.setItem("userAlreadyPlayed", "true");
+    }
+  }, [userAlreadyPlayed]);
+
+    
+
+
+
     const pointsAtZero = 0
 
-    async function enableScore(){
+  /*   async function enableScore(){
         const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid);
         setUserAlreadyPlayed(userAlreadyPlayed);
         setPoints(scoreFromDatabase);
@@ -85,9 +101,10 @@ const Game: React.FC<props> = ({ myChoice }) => {
             setPoints(pointsAtZero)
         }
       }
-
+ */
  
     useEffect(() => {
+        
     }, [points]);
 
 
@@ -103,7 +120,8 @@ const Game: React.FC<props> = ({ myChoice }) => {
             date: new Date()
           };
         createOrder(order)
-        setPoints(pointsAtZero);
+        /* setPoints(pointsAtZero); */  
+        console.log("pusheado a db")
     }
     
 
@@ -111,6 +129,10 @@ const Game: React.FC<props> = ({ myChoice }) => {
       useEffect(() => {
         newHousePick();
       }, []);
+
+      useEffect(() =>{
+
+      }, [])
    
         const winnerCheck = () => {
             setDisabled(false)
@@ -140,8 +162,8 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
               setInterval(() => {setCounter(counter - 1);}, 1000)
               
-
-                : winnerCheck();
+                : winnerCheck()
+                
                 
         
             return () => {
@@ -190,8 +212,8 @@ const Game: React.FC<props> = ({ myChoice }) => {
                 :
                 null
                 }
-                <button onClick={bringPointsFromDatabase}>bringPointsFromDatabase</button> 
-                <button onClick={enableScore}>Enable score from db</button>
+               {/* <button onClick={bringPointsFromDatabase}>bringPointsFromDatabase</button>  */}
+               {/*  <button onClick={enableScore}>Enable score from db</button> */}
                 <button onClick={sendInfo}>Send info</button>
             </div>
         </>
