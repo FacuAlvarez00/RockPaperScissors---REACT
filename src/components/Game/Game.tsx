@@ -63,33 +63,6 @@ const Game: React.FC<props> = ({ myChoice }) => {
     const {user, points, setPoints} = UserAuth()
     
     
-  
-/* useEffect(() => {
-    async function fetchData() {
-      try {
-        const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(
-          user.uid
-        );
-        setUserAlreadyPlayed(userAlreadyPlayed);
-        setPoints(scoreFromDatabase);
-        console.log("info traida de db");
-     
-      } catch (error) {
-        console.log("error");
-      }
-    }
-  
-    if (!userAlreadyPlayed) {
-      fetchData();
-      setUserAlreadyPlayed(true);
-      localStorage.setItem("userAlreadyPlayed", "true");
-    }
-  }, [userAlreadyPlayed]);
-
-     */
-
-
-
 
   /*   async function enableScore(){
         const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid);
@@ -104,7 +77,6 @@ const Game: React.FC<props> = ({ myChoice }) => {
       }
  */
  
-    
 
     const newHousePick = () => {
     setComputerChoice(choices[Math.floor(Math.random() * choices.length)]);

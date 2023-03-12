@@ -7,7 +7,7 @@ import { AuthContextProvider, UserAuth } from './context/AuthContext';
 import SignIn from './components/Acount/SignIn';
 import Account from './components/Acount/Account';
 import Protected from './components/AutoRedirect/AutoRedirect';
-import { getOrderScore } from './firebase';
+import Leaderboard from './components/Leaderboard/Leaderboard';
 
 
 
@@ -43,6 +43,7 @@ function App() {
             <Route path="/" element={<HomePage /* points={points} */ setMyChoice={setMyChoice} />} />
             <Route path="/game" element={<Game myChoice={myChoice} /* points={points} setPoints={setPoints} */ />} />
             <Route path="/signin" element={<SignIn/>}/>
+            <Route path="/leaderboard" element={<Leaderboard/>}></Route>
 
             <Route
             path='/account'

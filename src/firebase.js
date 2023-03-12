@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import {getFirestore, doc, setDoc, collection, addDoc, getDoc} from "firebase/firestore"
+import {getFirestore, doc, setDoc, collection, addDoc, getDoc, getDocs} from "firebase/firestore"
 import { UserAuth } from "./context/AuthContext";
 
 
@@ -78,4 +78,22 @@ export async function createOrder(order) {
 
   return respuesta.id;
 }
+/* 
+export async function getUserInfo(){
+  const productsRef = collection(db, "order")
+  const docRef = doc(productsRef)
+  const snapshot = await getDoc(docRef)
+  return { ...snapshot.data() }
+} */
 
+export async function getUserInfo(){
+  const productsRef = collection(db, "order")
+  const snapshot = await getDocs(productsRef)
+
+      const users = snapshot.docs.map((item) => {
+          let product = item.data()
+          product.id = item.id
+          return product
+      })
+      return(users)
+}
