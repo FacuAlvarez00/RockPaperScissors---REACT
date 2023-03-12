@@ -11,7 +11,7 @@ import { getOrderScore } from './firebase';
 
 
 
-/* const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]"); */
+
 const getUserChoiceFromStorage = JSON.parse(localStorage.getItem("userChoice") || "[]")
 
 
@@ -23,13 +23,14 @@ function App() {
   
 
   const [myChoice, setMyChoice] = useState(getUserChoiceFromStorage);
-  /* const [points, setPoints] = useState(getScoreFromStorage); */
+  const {points} = UserAuth()
+  
 
-  useEffect(() => {
-   /*  localStorage.setItem("score", JSON.stringify(points)) */
+  /* useEffect(() => {
+  
     localStorage.setItem("userChoice", JSON.stringify(myChoice))
-  }, [/* points */]);
-
+  },  [points]);
+ */
 
 
   return (

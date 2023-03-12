@@ -6,7 +6,7 @@ import SignIn from './SignIn'
 const Account = () => {
 
     const {user, logOut, handleSignOut, points} = UserAuth()
-    console.log(user)
+
 /* 
     const userData = {
         google_username: user.displayName,

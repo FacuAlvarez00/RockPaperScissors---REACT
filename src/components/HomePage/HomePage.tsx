@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import Header from '../Game/Header';
 import NavBar from "../NavBar/NavBar"
 import { UserAuth } from '../../context/AuthContext';
+import { getOrderScore } from '../../firebase';
+
 
 
 /*  type props = {
@@ -26,8 +28,39 @@ type props = {
 const HomePage: React.FC<props> = ({setMyChoice}) => {
  
 
-const {points, setPoints} = UserAuth()
- 
+const {points, setPoints, user} = UserAuth()
+const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(
+  localStorage.getItem("userAlreadyPlayed") === "false"
+);
+
+  
+
+  console.log(userAlreadyPlayed)
+
+
+
+useEffect(() => {
+  async function fetchData() {
+    try {
+      const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(
+        user.uid
+      );
+      setUserAlreadyPlayed(userAlreadyPlayed);
+      setPoints(scoreFromDatabase);
+      /* console.log("info traida de db"); */
+   
+    } catch (error) {
+      console.log("error");
+    }
+  }
+
+  if (!userAlreadyPlayed) {
+    fetchData();
+    setUserAlreadyPlayed(true);
+    localStorage.setItem("userAlreadyPlayed", "true");
+  }
+}, [userAlreadyPlayed]);
+
 
  return (
    <>

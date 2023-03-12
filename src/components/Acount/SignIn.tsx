@@ -29,7 +29,7 @@ const SignIn = () => {
 
     useEffect ( () => {
         if (user != null){
-            navigate("/account")
+            navigate("/")
         }
     }, [user])
 

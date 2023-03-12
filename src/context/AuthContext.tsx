@@ -42,20 +42,27 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider()
         signInWithPopup(auth, provider)
+        localStorage.setItem("userAlreadyPlayed", "true");
     }
 
     const logOut = () => {
       signOut(auth)
     }
 
+    const pointsAtZero = 0
+
     const handleSignOut = async () => {
       try {
           await logOut()
+          setPoints(pointsAtZero)
+          console.log(localStorage.setItem("userAlreadyPlayed", "false"))
+          localStorage.setItem("userChoice", "")
       } catch (error) {
           console.log(error)
       }
   }
   
+
  
 
     useEffect( () => {

@@ -48,22 +48,23 @@ const Game: React.FC<props> = ({ myChoice }) => {
       
 
    
-    const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(
+   /*  const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(
         localStorage.getItem("userAlreadyPlayed") === "true"
-      );
+      ); */
+    
+    localStorage.setItem("userChoice", JSON.stringify(myChoice))
 
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
-
     const [disabled, setDisabled] = useState<any>(true);
-    const [showGame, setShowGame] = useState<any>(false);
     const [counter, setCounter] = useState(1);
+
 
     const {user, points, setPoints} = UserAuth()
     
     
   
-useEffect(() => {
+/* useEffect(() => {
     async function fetchData() {
       try {
         const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(
@@ -72,6 +73,7 @@ useEffect(() => {
         setUserAlreadyPlayed(userAlreadyPlayed);
         setPoints(scoreFromDatabase);
         console.log("info traida de db");
+     
       } catch (error) {
         console.log("error");
       }
@@ -84,11 +86,10 @@ useEffect(() => {
     }
   }, [userAlreadyPlayed]);
 
-    
+     */
 
 
 
-    const pointsAtZero = 0
 
   /*   async function enableScore(){
         const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid);
@@ -103,10 +104,7 @@ useEffect(() => {
       }
  */
  
-    useEffect(() => {
-        
-    }, [points]);
-
+    
 
     const newHousePick = () => {
     setComputerChoice(choices[Math.floor(Math.random() * choices.length)]);
@@ -120,8 +118,7 @@ useEffect(() => {
             date: new Date()
           };
         createOrder(order)
-        /* setPoints(pointsAtZero); */  
-        console.log("pusheado a db")
+        /* console.log("pusheado a db") */
     }
     
 
@@ -131,12 +128,12 @@ useEffect(() => {
       }, []);
 
       useEffect(() =>{
+        
 
       }, [])
    
         const winnerCheck = () => {
             setDisabled(false)
-            setShowGame(true)
             if (
                 (myChoice.type === "Rock" && computerChoice.type === "Scissors") ||
                 (myChoice.type === "Paper" && computerChoice.type === "Rock") ||
@@ -170,6 +167,11 @@ useEffect(() => {
               clearInterval(timer);
             };
           }, [counter, computerChoice]);
+
+        useEffect(() => {
+            sendInfo()
+          }, [points]);
+        
         
 
     return (
