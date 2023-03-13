@@ -12,6 +12,10 @@ interface IAuthContext {
   handleSignOut: any
   points: any
   setPoints: any
+  timesLost: any
+  setTimesLost: any
+  timesWon: any
+  setTimesWon: any
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
@@ -27,17 +31,15 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
 
   const [user, setUser] = useState({})
   const [points, setPoints] = useState(getScoreFromStorage);
+  const [timesWon, setTimesWon] =  useState<any>(0)
+  const [timesLost, setTimesLost] =  useState<any>(0)
 
 
 
   useEffect(() => {
     localStorage.setItem("score", JSON.stringify(points))
- 
   }, [points]);
 
-
-
-  
 
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider()
@@ -78,7 +80,7 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
 
 
 
-    return <AuthContext.Provider value={{ googleSignIn, logOut, user, handleSignOut, points, setPoints }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ googleSignIn, logOut, user, handleSignOut, points, setPoints, timesLost, setTimesLost, timesWon, setTimesWon }}>{children}</AuthContext.Provider>;
 };
 
 export const UserAuth = () => {

@@ -5,7 +5,7 @@ import SignIn from './SignIn'
 
 const Account = () => {
 
-    const {user, logOut, handleSignOut, points} = UserAuth()
+    const {user, logOut, handleSignOut, points, timesWon,  timesLost} = UserAuth()
 
 /* 
     const userData = {
@@ -31,8 +31,8 @@ const Account = () => {
         <h1> You are not signed in</h1>
         }
         <h2>Your current points are: {points}</h2>
-        <h2>You won: X times</h2>
-        <h2>You lost: X times</h2>
+        <h2>You won: {timesWon} times</h2>
+        <h2>You lost: {timesLost} times</h2>
 
         <button onClick={handleSignOut}>Log Out</button>
      {/*    <button onClick={handleDataSent}></button> */}

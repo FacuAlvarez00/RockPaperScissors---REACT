@@ -56,11 +56,12 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
+ 
     const [disabled, setDisabled] = useState<any>(true);
     const [counter, setCounter] = useState(1);
 
 
-    const {user, points, setPoints} = UserAuth()
+    const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost} = UserAuth()
     
     
 
@@ -87,11 +88,15 @@ const Game: React.FC<props> = ({ myChoice }) => {
             userinfo: user.uid,
             googleUserName: user.displayName,
             score: points,
-            date: new Date()
+            looses: timesLost,
+            wins: timesWon,
+            date: new Date(),
           };
         createOrder(order)
         /* console.log("pusheado a db") */
     }
+
+    
     
 
 
@@ -113,11 +118,13 @@ const Game: React.FC<props> = ({ myChoice }) => {
             ) {
                 setResult('You won!');
                 setPoints(points + 1); 
+                setTimesWon(timesWon + 1)
             } else if (myChoice.id === computerChoice.id) {
                 setResult('DRAW');
             } else {
                 setResult('You lost');
                 setPoints(points - 1);
+                setTimesLost(timesLost + 1)
     
             }
         };
@@ -188,7 +195,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
                 }
                {/* <button onClick={bringPointsFromDatabase}>bringPointsFromDatabase</button>  */}
                {/*  <button onClick={enableScore}>Enable score from db</button> */}
-                <button onClick={sendInfo}>Send info</button>
+                {/* <button onClick={sendInfo}>Send info</button> */}
             </div>
         </>
     );

@@ -25,31 +25,6 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app)
 
-/* const {user, points} = UserAuth()  
-   
-
- if (user && points != null ){ 
-  
-
-const data = {
-  campo1: 'valor1',
-  campo2: 'valor2',
-  uid: user.reloadUserInfo.localId 
-
-
-};
-
-
-
-async function createOrder(order) {
-}
-
-
-
-} 
- */
-
-const userAlreadyPlayed = Boolean
 
 export async function getOrderScore(uid) {
   const orderRef = doc(db, "order", uid); // referencia al documento con el UID especificado
@@ -58,26 +33,38 @@ export async function getOrderScore(uid) {
 
   let userAlreadyPlayed = false;
   let scoreFromDatabase = null;
+  let winsFromDatabase = null
+  let loosesFromDatabase = null
 
   if (docSnap.exists()) { // verificar si el documento existe
     userAlreadyPlayed = true;
     scoreFromDatabase = docSnap.data().score; // devolver el valor de la propiedad "score"
+    winsFromDatabase = docSnap.data().wins
+    loosesFromDatabase = docSnap.data().looses
   } 
   return {
     userAlreadyPlayed,
-    scoreFromDatabase
+    scoreFromDatabase,
+    winsFromDatabase,
+    loosesFromDatabase,
   };
   
 }
 
 export async function createOrder(order) {
   const orderRef = doc(db, "order", order.userinfo);
+  let respuesta = await setDoc(orderRef, order);
+  return respuesta
+
+}
+/* export async function createOrder(order) {
+  const orderRef = doc(db, "order", order.userinfo);
 
   let respuesta = await setDoc(orderRef, order);
   console.log(respuesta, respuesta.id);
 
   return respuesta.id;
-}
+} */
 /* 
 export async function getUserInfo(){
   const productsRef = collection(db, "order")

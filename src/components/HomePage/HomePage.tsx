@@ -28,25 +28,27 @@ type props = {
 const HomePage: React.FC<props> = ({setMyChoice}) => {
  
 
-const {points, setPoints, user} = UserAuth()
+const {points, setPoints, user, timesWon, setTimesWon, timesLost, setTimesLost} = UserAuth()
 const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(
   localStorage.getItem("userAlreadyPlayed") === "false"
 );
 
   
 
-  console.log(userAlreadyPlayed)
+
 
 
 
 useEffect(() => {
   async function fetchData() {
     try {
-      const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(
+      const { userAlreadyPlayed, scoreFromDatabase, winsFromDatabase, loosesFromDatabase } = await getOrderScore(
         user.uid
       );
       setUserAlreadyPlayed(userAlreadyPlayed);
       setPoints(scoreFromDatabase);
+      setTimesWon(winsFromDatabase)
+      setTimesLost(loosesFromDatabase)
       /* console.log("info traida de db"); */
    
     } catch (error) {
@@ -64,9 +66,7 @@ useEffect(() => {
 
  return (
    <>
-     <h1>
-       ESTA ES LA HOMEPAGE!!!
-     </h1>
+   
      <Header points={points}/>
      <Options setMyChoice={setMyChoice}/>
    </>
