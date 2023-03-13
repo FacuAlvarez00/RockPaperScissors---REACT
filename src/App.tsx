@@ -42,8 +42,8 @@ function App() {
         <AuthContextProvider>
           <NavBar />
           <Routes>
-            <Route path="/" element={<HomePage /* points={points} */ setMyChoice={setMyChoice} />} />
-            <Route path="/game" element={<Game myChoice={myChoice} /* points={points} setPoints={setPoints} */ />} />
+            <Route path="/" element={<HomePage setMyChoice={setMyChoice} />} />
+            <Route path="/game" element={<Game myChoice={myChoice}/>} />
             <Route path="/signin" element={<SignIn/>}/>
             <Route path="/leaderboard" element={<Leaderboard/>}></Route>
             <Route path="/about" element={<About/>}></Route>
