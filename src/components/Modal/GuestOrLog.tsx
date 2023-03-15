@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import Swal from "sweetalert2";
 import "./rules.css"
+import { Link } from 'react-router-dom';
 
 
 
@@ -7,11 +9,10 @@ const GuestOrLog = () => {
 
     const [modal, setModal] = useState(true);
 
-  const toggleModal = () => {
+ const toggleModal = () => {
     setModal(!modal);
   };
-
-
+ 
 
   return (
 
@@ -24,6 +25,14 @@ const GuestOrLog = () => {
             <button className="close-modal" onClick={toggleModal}>
               CLOSE
             </button>
+            <div>
+                <Link to="/signin">
+                    <button onClick={toggleModal}>Yes</button>
+                </Link>
+                
+                <button onClick={toggleModal}>No, i want to play as guest</button>
+            </div>
+            
           </div>
         </div>
       )}

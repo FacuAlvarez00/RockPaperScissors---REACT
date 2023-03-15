@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import rulesSVG from "../../../src/assets/Rules/image-rules.svg"
+import close from "../../../src/assets/Rules/close.svg"
 import "./rules.css"
 
 
@@ -25,10 +26,10 @@ const Rules = () => {
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
-            <h2>Hello Modal</h2>
+            <h1>RULES</h1>
             <img src={rulesSVG}/>
             <button className="close-modal" onClick={toggleModal}>
-              CLOSE
+              <img src={close}/>
             </button>
           </div>
         </div>

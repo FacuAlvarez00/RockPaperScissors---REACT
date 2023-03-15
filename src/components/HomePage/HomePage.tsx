@@ -3,7 +3,7 @@ import Game from '../Game/Game'
 import Options from '../Game/Options'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Header from '../Game/Header';
+import Header from '../Header/Header';
 import NavBar from "../NavBar/NavBar"
 import { UserAuth } from '../../context/AuthContext';
 import { getOrderScore } from '../../firebase';

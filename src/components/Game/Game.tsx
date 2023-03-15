@@ -4,7 +4,7 @@ import scissors from '../../assets/icons/scissors.svg'
 import rock from '../../assets/icons/rock.svg'
 import { Link } from 'react-router-dom';
 import "./playable.css"
-import Header from './Header';
+import Header from '../Header/Header';
 import { UserAuth } from '../../context/AuthContext';
 import { createOrder, getOrderScore } from '../../firebase';
 import Options from './Options'

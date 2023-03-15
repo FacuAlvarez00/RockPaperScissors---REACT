@@ -9,7 +9,7 @@ import Account from './components/Acount/Account';
 import Protected from './components/AutoRedirect/AutoRedirect';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import About from './components/About/About';
-import NotFound from './components/About/NotFound/NotFound';
+import NotFound from './components/NotFound/NotFound';
 import GuestOrLog from './components/Modal/GuestOrLog';
 
 
