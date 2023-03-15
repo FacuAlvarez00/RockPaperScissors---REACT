@@ -57,7 +57,7 @@ const Options: React.FC<props> = ({ setMyChoice }) => {
       ))}
 
     </div>
-    <button>RULES</button>
+ 
 
 
     </>

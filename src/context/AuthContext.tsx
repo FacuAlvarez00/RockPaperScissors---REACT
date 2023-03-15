@@ -4,7 +4,6 @@ import {auth, getOrderScore} from "../firebase"
 
 
 
-
 interface IAuthContext {
   googleSignIn: any
   logOut: any
@@ -24,21 +23,21 @@ interface IAuthContextProviderProps {
   children: ReactNode;
 }
 
-const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]");
+/* const getScoreFromStorage = JSON.parse(localStorage.getItem("score") || "[]"); */
 
 
 export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
 
   const [user, setUser] = useState({})
-  const [points, setPoints] = useState(getScoreFromStorage);
+  const [points, setPoints] = useState<any>(0);
   const [timesWon, setTimesWon] =  useState<any>(0)
   const [timesLost, setTimesLost] =  useState<any>(0)
 
 
 
-  useEffect(() => {
+ /*  useEffect(() => {
     localStorage.setItem("score", JSON.stringify(points))
-  }, [points]);
+  }, [points]); */
 
 
     const googleSignIn = () => {

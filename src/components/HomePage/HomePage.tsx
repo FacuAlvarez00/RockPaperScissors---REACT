@@ -7,6 +7,9 @@ import Header from '../Game/Header';
 import NavBar from "../NavBar/NavBar"
 import { UserAuth } from '../../context/AuthContext';
 import { getOrderScore } from '../../firebase';
+import Rules from '../Modal/Rules';
+import Account from '../Acount/Account';
+
 
 
 
@@ -68,7 +71,9 @@ useEffect(() => {
    <>
    
      <Header points={points}/>
+     {/* <Account/> */}
      <Options setMyChoice={setMyChoice}/>
+     <Rules/>
    </>
  );
 }

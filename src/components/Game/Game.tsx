@@ -46,12 +46,6 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
 
       
-
-   
-   /*  const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(
-        localStorage.getItem("userAlreadyPlayed") === "true"
-      ); */
-    
     localStorage.setItem("userChoice", JSON.stringify(myChoice))
 
     const [computerChoice, setComputerChoice] = useState<any>();
@@ -85,8 +79,8 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
     function sendInfo() {
         const order = {
-            userinfo: user.uid,
-            googleUserName: user.displayName,
+            userinfo: user?.uid,
+            googleUserName: user?.displayName,
             score: points,
             looses: timesLost,
             wins: timesWon,

@@ -10,30 +10,19 @@ import Protected from './components/AutoRedirect/AutoRedirect';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import About from './components/About/About';
 import NotFound from './components/About/NotFound/NotFound';
+import GuestOrLog from './components/Modal/GuestOrLog';
 
 
 
 
 const getUserChoiceFromStorage = JSON.parse(localStorage.getItem("userChoice") || "[]")
 
-
 function App() {
 
 
 
- 
-  
-
   const [myChoice, setMyChoice] = useState(getUserChoiceFromStorage);
-  const {points} = UserAuth()
   
-
-  /* useEffect(() => {
-  
-    localStorage.setItem("userChoice", JSON.stringify(myChoice))
-  },  [points]);
- */
-
 
   return (
     <>
@@ -41,6 +30,7 @@ function App() {
       <BrowserRouter>
         <AuthContextProvider>
           <NavBar />
+          <GuestOrLog/>
           <Routes>
             <Route path="/" element={<HomePage setMyChoice={setMyChoice} />} />
             <Route path="/game" element={<Game myChoice={myChoice}/>} />

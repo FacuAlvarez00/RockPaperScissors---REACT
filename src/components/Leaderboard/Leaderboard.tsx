@@ -23,7 +23,7 @@ const Leaderboard = () => {
       }
 
 
-console.log(userInfo)
+
 
   return (
     <>
@@ -31,7 +31,7 @@ console.log(userInfo)
             <h1>PLAYER INFO</h1>
         {userInfo? 
         userInfo.sort(compareScores).map((user: any) => (
-          <div className="leaderboardGeneral">
+          <div className="leaderboardGeneral" key={user.userinfo}>
             <h1>Name: {user.googleUserName}</h1>
             <h1>Wins: {user.wins}</h1>
             <h1>Looses: {user.looses}</h1>
