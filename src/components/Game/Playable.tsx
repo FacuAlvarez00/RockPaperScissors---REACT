@@ -1,7 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import Won from './Won'
-import Lost from './Lost'
-import Draw from './Draw'
+import React from 'react'
+
+const Playable = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default Playable
+
+
+
+/* import React, { useEffect, useState } from 'react'
 import paper from '../../assets/icons/paper.svg'
 import scissors from '../../assets/icons/scissors.svg'
 import rock from '../../assets/icons/rock.svg'
@@ -106,4 +117,4 @@ const Playable = () => {
     );
   };
   
-  export default Playable;
+  export default Playable; */

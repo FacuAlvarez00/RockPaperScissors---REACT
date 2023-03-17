@@ -10,12 +10,21 @@ type props = {
 const Header: React.FC<props> = (({points}) => {
    
     return (
-        <div>
+ 
             <div className='header_wrapper'>
-                <img className='iconHeader' src={icon}/>
-                <h1>CURRENT SCORE: {points}</h1>
+                <div className='textbox'>
+                    <span>ROCK</span>
+                    <span>PAPER</span>
+                    <span>SCISSORS</span>
+                </div>
+
+                <div className='scorebox'>
+                    <span className='scoreTitle'>Score</span>
+                    <span className='score'>{points}</span>
+                </div>
+                
             </div>
-        </div>
+   
     )
 })
 

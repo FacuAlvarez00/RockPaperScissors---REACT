@@ -1,9 +1,43 @@
 .header_wrapper{
     display: flex;
-    margin-bottom: 50px;
+    border: 3px solid #9655c5;
+    margin: 10px 0 50px 0;
+    justify-content: space-between;
+    width: 90%;
+    padding: 20px;
+    border-radius: 1rem;   
+}
+
+.textbox{
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.scorebox{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5%;
+    padding: 10px 30px;
+}
+
+.scoreTitle{
+    text-align: center;
+    font-size: 15px;
+    color: #571089;
+    font-weight: 500;
+
 
 }
 
-.iconHeader{
-    background-color: aquamarine;
+.score{
+    font-size: 35px;
+    text-align: center;
+    color: #571089;
+    font-weight: bold;
+
 }

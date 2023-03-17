@@ -38,6 +38,7 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path="*" element={<NotFound/>}></Route>
+            
 
             <Route
             path='/account'

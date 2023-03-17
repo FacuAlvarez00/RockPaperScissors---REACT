@@ -1,0 +1,116 @@
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .navbar-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    margin-right: auto;
+  }
+  
+  .navbar-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+  
+  .navbar-toggle-icon {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .navbar-links.active {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar-link {
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  .navbar-link a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .navbar {
+      flex-direction: row;
+      padding: 20px;
+    }
+  
+    .navbar-container {
+      flex-wrap: nowrap;
+    }
+  
+    .navbar-logo {
+      margin-right: 0;
+    }
+  
+    .navbar-toggle {
+      display: none;
+    }
+  
+    .navbar-links {
+      position: initial;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: transparent;
+      overflow: visible;
+      height: auto;
+      width: auto;
+    }
+  
+    .navbar-link {
+      padding: 0 20px;
+      width: auto;
+    }
+  }

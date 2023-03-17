@@ -3,13 +3,11 @@ import paper from '../../assets/icons/paper.svg'
 import scissors from '../../assets/icons/scissors.svg'
 import rock from '../../assets/icons/rock.svg'
 import { Link } from 'react-router-dom';
-import "./playable.css"
+import "./options.css"
 import Header from '../Header/Header';
 import { UserAuth } from '../../context/AuthContext';
 import { createOrder, getOrderScore } from '../../firebase';
-import Options from './Options'
-import HomePage from '../HomePage/HomePage';
-import userEvent from '@testing-library/user-event';
+
 
 
 

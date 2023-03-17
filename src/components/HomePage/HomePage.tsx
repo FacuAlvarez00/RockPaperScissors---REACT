@@ -9,6 +9,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { getOrderScore } from '../../firebase';
 import Rules from '../Modal/Rules';
 import Account from '../Acount/Account';
+import "./homepage.css"
 
 
 
@@ -69,11 +70,14 @@ useEffect(() => {
 
  return (
    <>
+   <main className='container'>
+
    
      <Header points={points}/>
      {/* <Account/> */}
      <Options setMyChoice={setMyChoice}/>
      <Rules/>
+     </main>
    </>
  );
 }
