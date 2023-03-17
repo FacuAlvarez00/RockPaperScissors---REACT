@@ -37,6 +37,10 @@ de mover el estado de points al componente game.
 -Agregar skeleton loader, buscar la manera de implementar sweet alert o alguna libreria de estilado.
 -Que el usuario vea siempre mas alla de la navbar si esta como guest o si esta logueado.
 
+https://react-js-rock-paper-scissors-game-ji6h1k10h.vercel.app/
+
+https://github.com/codebucks27/ReactJs-rock-paper-scissors-game/blob/main/src/components/Play.js
+
 
 COLORES:
 https://coolors.co/palette/ea698b-d55d92-c05299-ac46a1-973aa8-822faf-6d23b6-6411ad-571089-47126b
