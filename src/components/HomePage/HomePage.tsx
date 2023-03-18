@@ -70,7 +70,7 @@ useEffect(() => {
 
  return (
    <>
-   <main className='container'>
+   <main className=''>
 
    
      <Header points={points}/>

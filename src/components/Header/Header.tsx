@@ -10,7 +10,9 @@ type props = {
 const Header: React.FC<props> = (({points}) => {
    
     return (
- 
+        <div className='headerContainer'>
+
+        
             <div className='header_wrapper'>
                 <div className='textbox'>
                     <span>ROCK</span>
@@ -23,6 +25,8 @@ const Header: React.FC<props> = (({points}) => {
                     <span className='score'>{points}</span>
                 </div>
                 
+            </div>
+
             </div>
    
     )

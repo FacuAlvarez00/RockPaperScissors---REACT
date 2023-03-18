@@ -1,8 +1,13 @@
+.headerContainer{
+    display: flex;
+    justify-content: center;
+}
 .header_wrapper{
     display: flex;
     border: 3px solid #9655c5;
     margin: 10px 0 50px 0;
     justify-content: space-between;
+    justify-items: center;
     width: 90%;
     padding: 20px;
     border-radius: 1rem;   

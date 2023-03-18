@@ -3,7 +3,7 @@ import paper from '../../assets/icons/paper.svg'
 import scissors from '../../assets/icons/scissors.svg'
 import rock from '../../assets/icons/rock.svg'
 import { Link } from 'react-router-dom';
-import "./options.css"
+import "./game.css"
 import Header from '../Header/Header';
 import { UserAuth } from '../../context/AuthContext';
 import { createOrder, getOrderScore } from '../../firebase';
@@ -50,7 +50,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
     const [result, setResult] = useState<any>(null);
  
     const [disabled, setDisabled] = useState<any>(true);
-    const [counter, setCounter] = useState(1);
+    const [counter, setCounter] = useState(3);
 
 
     const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost} = UserAuth()
@@ -108,20 +108,20 @@ const Game: React.FC<props> = ({ myChoice }) => {
                 (myChoice.type === "Paper" && computerChoice.type === "Rock") ||
                 (myChoice.type === "Scissors" && computerChoice.type === "Paper")
             ) {
-                setResult('You won!');
+                setResult('YOU WON');
                 setPoints(points + 1); 
                 setTimesWon(timesWon + 1)
             } else if (myChoice.id === computerChoice.id) {
                 setResult('DRAW');
             } else {
-                setResult('You lost');
+                setResult('YOU LOST');
                 setPoints(points - 1);
                 setTimesLost(timesLost + 1)
     
             }
         };
 
-
+      
 
         useEffect(() => {
             const timer: any =
@@ -139,52 +139,69 @@ const Game: React.FC<props> = ({ myChoice }) => {
             };
           }, [counter, computerChoice]);
 
-        useEffect(() => {
+       /*  useEffect(() => {
             sendInfo()
-          }, [points]);
+          }, [points]); */
         
         
 
     return (
         <>
-           {disabled? (
+{/*            {disabled? (
   null
 ):
 <Link to="/">
     <button>Home</button>
   </Link>}
-
-            <div>
+ */}
+            <div className='containerGame'>
                 <Header points={points}/>
 
 
-                <div className='dd'>
+               
+                <div className='chosesContainer'>
 
-                <h1>You choose:</h1>
+                <div className='houseChoice'>
+                <span>YOU PICKED</span>
 
-                    {counter === 0 ? (
-                        <>
-                        <img className='icons' src={myChoice && myChoice.img}></img>
-                        </>
-                    ) : null}
+                     
+                        <div className='circleGame circleUser circleUser'>
+                        <img className='iconsGame' src={myChoice && myChoice.img}></img>
+                        </div>
+                    
                 </div>
 
-                <div className='dd'>
-                    <h1>The house choose:</h1>
+                    <div className='houseChoice'>
+                    <span>THE HOUSE PICKED</span>
                     {counter === 0 ? (
-                        <img className='icons' src={computerChoice && computerChoice.img}></img>
-                    ) : null}
+                        <div className='circleGame circleHouse circleHouse'>
+                            <img className='iconsGame' src={computerChoice && computerChoice.img}></img>
+                        </div>
+                    ) : 
+                    <div className='emptyCircle'>
+                        <span>{counter}</span>
+                    </div>
+                    
+                    }
+                    </div>
+
+               </div>
+                
+                <div className='textboxGame'>
+                    <span>{result}</span>
+                    {counter === 0 ? 
+                    <Link to="/">
+                    <button>PLAY AGAIN</button>
+                    </Link>
+                    :
+                    null
+                    }
+                    
                 </div>
+               
+                
 
-                <h3>{result}</h3>
-
-                {counter === 0 ? 
-                <Link to="/">
-                    <button>Play again</button>
-                </Link>
-                :
-                null
-                }
+              
                {/* <button onClick={bringPointsFromDatabase}>bringPointsFromDatabase</button>  */}
                {/*  <button onClick={enableScore}>Enable score from db</button> */}
                 {/* <button onClick={sendInfo}>Send info</button> */}

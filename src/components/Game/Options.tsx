@@ -4,6 +4,7 @@ import scissors from '../../assets/icons/scissors.svg'
 import rock from '../../assets/icons/rock.svg'
 import { Link } from 'react-router-dom'
 import triangle from "../../assets/icons/bg-triangle.svg"
+import "./options.css"
 
 
 const choices = [
