@@ -2,17 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { UserAuth } from '../../context/AuthContext';
 import { getUserInfo } from '../../firebase';
 import "./leaderboard.css"
+import { MdLeaderboard } from 'react-icons/md';
+
+
 
 
 const Leaderboard = () => {
 
-    const [userInfo, setUserInfo] = useState<any>()
-    const {points} = UserAuth()
+    const [usersInfo, setUsersInfo] = useState<any>()
+    const {points, user} = UserAuth()
 
     useEffect(() => {
         async function fetchData() {
           const data = await getUserInfo();
-          setUserInfo(data);
+          setUsersInfo(data);
         }
         fetchData();
       }, [points]);
@@ -23,19 +26,65 @@ const Leaderboard = () => {
       }
 
 
+      console.log(usersInfo)
+      console.log(user)
+
+      const keyword = user.uid
 
 
+     
+
+     if (user && usersInfo){
+        const userLogued = usersInfo.filter((userData: any) =>
+        userData.id.toLowerCase().includes(keyword.toLowerCase()) 
+        )
+        console.log(userLogued)
+      }
+     
+     
+    
   return (
     <>
-        <div>
-            <h1>PLAYER INFO</h1>
-        {userInfo? 
-        userInfo.sort(compareScores).map((user: any) => (
-          <div className="leaderboardGeneral" key={user.userinfo}>
-            <h1>Name: {user.googleUserName}</h1>
-            <h1>Wins: {user.wins}</h1>
-            <h1>Looses: {user.looses}</h1>
-            <h1>Score: {user.score}</h1>
+        <div className='dataContainer__header'>
+            <MdLeaderboard className='icon'/>
+            <h1>USER LEADERBOARD</h1>
+          </div>
+        <div className='dataContainer'>
+          
+
+        <div className='dataReference'>
+
+          <span>Name</span>
+          <span>Wins</span>
+          <span>Looses</span>
+          <span>Score</span>
+
+        </div>
+
+    
+
+
+      {usersInfo && user? 
+      usersInfo.filter((userData: any) =>
+      userData.id.toLowerCase().includes(keyword.toLowerCase())
+      ).map((filteredData: any) => 
+      <div className="playerLogued" key={filteredData.id}>
+        <span>YOU</span>
+        <span>{filteredData.wins}</span>
+        <span>{filteredData.looses}</span>
+        <span>{filteredData.score}</span>
+      </div>
+      )
+      : null
+      }
+ 
+        {usersInfo? 
+        usersInfo.sort(compareScores).map((users: any) => (
+          <div className="playerdata" key={users.userinfo}>
+            <span>{users.googleUserName}</span>
+            <span>{users.wins}</span>
+            <span>{users.looses}</span>
+            <span>{users.score}</span>
   
           </div>
         )) : <p>Loading...</p>
