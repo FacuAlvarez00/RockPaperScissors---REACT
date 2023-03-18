@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { UserAuth } from '../../context/AuthContext'
 import { getUserInfo } from '../../firebase'
+import "./account.css"
 
 const Account = () => {
 
@@ -40,21 +41,32 @@ const Account = () => {
         })
         } */}
 
-        {user && userInfo? <h1>Welcome {user.displayName}</h1> : 
-        <h1> You are not signed in</h1>
-        }
-        {userInfo?
+        {user && userInfo?
         <>
-        <h2>Your current points are: {points}</h2>
-        <h2>You won: {data[0].wins} times</h2>
-        <h2>You lost: {data[0].looses} times</h2> 
+        <button className="btnAccount" onClick={handleSignOut}>Log Out</button>
+         <div className='accountContainer'>
+          <div className='avatarAccount'>
+
+          </div>
+          <h1>{user.displayName}</h1>
+          <div className='accountData'>
+            <p>Your current points are: {points}</p>
+            <p>You won: {data[0].wins} times</p>
+            <p>You lost: {data[0].looses} times</p>
+
+          </div>
+
+        </div>
+        
         </>
+       
+        
+
         :
-        null
+        <span>Loading...</span>
         }
         
 
-        <button onClick={handleSignOut}>Log Out</button>
      {/*    <button onClick={handleDataSent}></button> */}
 
       

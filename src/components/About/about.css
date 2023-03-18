@@ -1,0 +1,24 @@
+.aboutContainer{
+
+    margin-top: 20px;
+    color: white;
+    padding: 0 30px;
+    
+
+}
+.aboutContainer h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.aboutContainer p{
+    font-size: 22px;
+    text-align: center;
+    
+}
+.githubAbout{
+    color: rgb(228, 169, 20);
+    text-decoration: none;
+}
+.githubAbout:hover{
+    color: rgba(255, 255, 255, 0.747);
+}

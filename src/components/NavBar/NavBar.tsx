@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { UserAuth } from '../../context/AuthContext'
 import styled from "styled-components"
 import "./navbar.css"
+import logo from "../../../src/assets/icons/logo.svg"
 
 
 const Navbar = () => {
@@ -18,7 +19,7 @@ const Navbar = () => {
         <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo">
-            Logo
+            <img src={logo}/>
           </Link>
           <button className="navbar-toggle" onClick={handleToggle}>
             <span className="navbar-toggle-icon"></span>
