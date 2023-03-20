@@ -1,0 +1,23 @@
+.infoDisplayContainer{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    height: 70px;
+    justify-content: space-between;
+  
+    border-radius: 8px;
+    padding: 0px 10px;
+    color: rgb(56,12,85);
+}
+.iconUser{
+    width: 55px;
+    height: 55px;
+}
+.textboxNavbar{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.textboxNavbar span{
+    margin: 3px 0;
+}

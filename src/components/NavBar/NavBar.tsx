@@ -4,6 +4,7 @@ import { UserAuth } from '../../context/AuthContext'
 import styled from "styled-components"
 import "./navbar.css"
 import logo from "../../../src/assets/icons/logo.svg"
+import UserInfoDisplay from './UserInfoDisplay'
 
 
 const Navbar = () => {
@@ -20,7 +21,7 @@ const Navbar = () => {
         <div className="navbar-container">
           <Link to="/" className="navbar-logo">
             <img src={logo}/>
-          </Link>
+          </Link> 
           <button className="navbar-toggle" onClick={handleToggle}>
             <span className="navbar-toggle-icon"></span>
           </button>
@@ -34,7 +35,8 @@ const Navbar = () => {
             <li className="navbar-link">
               <Link to="/about">About</Link>
             </li>
-          </ul>
+         
+          
           {user ?  (
             <li className="navbar-link">
                 <Link to="/account">
@@ -51,6 +53,11 @@ const Navbar = () => {
             </li>
             )
             }
+          
+              
+            
+             </ul>
+             <UserInfoDisplay/>
         </div>
       </nav>
 

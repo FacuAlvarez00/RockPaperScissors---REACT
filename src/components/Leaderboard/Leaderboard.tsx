@@ -26,8 +26,7 @@ const Leaderboard = () => {
       }
 
 
-      console.log(usersInfo)
-      console.log(user)
+    
 
       const keyword = user.uid
 
@@ -38,7 +37,7 @@ const Leaderboard = () => {
         const userLogued = usersInfo.filter((userData: any) =>
         userData.id.toLowerCase().includes(keyword.toLowerCase()) 
         )
-        console.log(userLogued)
+  
       }
      
      
