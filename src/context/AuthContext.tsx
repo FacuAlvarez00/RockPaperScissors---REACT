@@ -15,6 +15,8 @@ interface IAuthContext {
   setTimesLost: any
   timesWon: any
   setTimesWon: any
+  userAvatar: any
+  setUserAvatar: any
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
@@ -32,6 +34,7 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
   const [points, setPoints] = useState<any>(0);
   const [timesWon, setTimesWon] =  useState<any>(0)
   const [timesLost, setTimesLost] =  useState<any>(0)
+  const [userAvatar, setUserAvatar] = useState<any>()
 
 
 
@@ -58,6 +61,7 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
           setPoints(pointsAtZero)
           console.log(localStorage.setItem("userAlreadyPlayed", "false"))
           localStorage.setItem("userChoice", "")
+          setUserAvatar(null)
       } catch (error) {
           console.log(error)
       }
@@ -79,7 +83,7 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
 
 
 
-    return <AuthContext.Provider value={{ googleSignIn, logOut, user, handleSignOut, points, setPoints, timesLost, setTimesLost, timesWon, setTimesWon }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ googleSignIn, logOut, user, handleSignOut, points, setPoints, timesLost, setTimesLost, timesWon, setTimesWon, userAvatar, setUserAvatar }}>{children}</AuthContext.Provider>;
 };
 
 export const UserAuth = () => {

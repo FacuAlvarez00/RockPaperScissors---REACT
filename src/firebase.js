@@ -35,18 +35,21 @@ export async function getOrderScore(uid) {
   let scoreFromDatabase = null;
   let winsFromDatabase = null
   let loosesFromDatabase = null
+  let avatarFromDatabase = null
 
   if (docSnap.exists()) { // verificar si el documento existe
     userAlreadyPlayed = true;
     scoreFromDatabase = docSnap.data().score; // devolver el valor de la propiedad "score"
     winsFromDatabase = docSnap.data().wins
     loosesFromDatabase = docSnap.data().looses
+    avatarFromDatabase = docSnap.data().avatar
   } 
   return {
     userAlreadyPlayed,
     scoreFromDatabase,
     winsFromDatabase,
     loosesFromDatabase,
+    avatarFromDatabase
   };
   
 }

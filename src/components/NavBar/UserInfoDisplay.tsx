@@ -7,16 +7,21 @@ import "./userinfodisplay.css"
 const UserInfoDisplay = () => {
 
 
-    const {user, points} = UserAuth()
+    const {user, points, userAvatar} = UserAuth()
 
-console.log(user)
 
 
   return (
     <div className='userDisplayContainer'>
     <div className='infoDisplay'>
         <div>
-            <RxAvatar className='iconUser'/>
+            {userAvatar? 
+            <img className="iconDisplay" src={userAvatar}/>
+            :
+            <RxAvatar className='iconUser'/>     
+            } 
+            
+            
         </div>
 
         <div className='textboxNavbar'>

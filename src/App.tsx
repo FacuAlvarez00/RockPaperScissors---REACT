@@ -22,6 +22,10 @@ function App() {
 
 
   const [myChoice, setMyChoice] = useState(getUserChoiceFromStorage);
+  const [userAvatar, setUserAvatar] = useState<any>()
+
+
+  
   
 
   return (
@@ -29,7 +33,7 @@ function App() {
 
       <BrowserRouter>
         <AuthContextProvider>
-          <NavBar />
+          <NavBar/>
           <GuestOrLog/>
           <Routes>
             <Route path="/" element={<HomePage setMyChoice={setMyChoice} />} />

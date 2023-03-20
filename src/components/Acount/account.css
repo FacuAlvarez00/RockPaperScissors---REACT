@@ -5,11 +5,15 @@
     margin-top: 20px;
 }
 .avatarAccount{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: black;
     border: cyan;
+    border-width: 1px solid black;
+}
+.avatarAccount img{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 50%;
+
 }
 .accountContainer h1{
     font-size: 25px;
@@ -37,4 +41,11 @@
 .btnAccount:hover{
     background-color: rgb(213, 210, 210);
 
+}
+.avatarPanel{
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    cursor: pointer;
+    margin-right: 10px;
 }

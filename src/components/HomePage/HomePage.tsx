@@ -46,14 +46,14 @@ const [userAlreadyPlayed, setUserAlreadyPlayed] = useState<boolean>(
 useEffect(() => {
   async function fetchData() {
     try {
-      const { userAlreadyPlayed, scoreFromDatabase, winsFromDatabase, loosesFromDatabase } = await getOrderScore(
+      const { userAlreadyPlayed, scoreFromDatabase, winsFromDatabase, loosesFromDatabase} = await getOrderScore(
         user.uid
       );
       setUserAlreadyPlayed(userAlreadyPlayed);
       setPoints(scoreFromDatabase);
       setTimesWon(winsFromDatabase)
       setTimesLost(loosesFromDatabase)
-      /* console.log("info traida de db"); */
+      console.log("info traida de db");
    
     } catch (error) {
       console.log("error");

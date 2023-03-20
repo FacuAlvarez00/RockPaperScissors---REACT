@@ -47,27 +47,27 @@ const Navbar = () => {
           </button>
           
           <ul className={open ? "navbar-links active" : "navbar-links"}>
-            <li onClick={handleToggle} className="navbar-link">
+            <li  className="navbar-link">
               <Link to="/">Home</Link>
             </li>
-            <li onClick={handleToggle} className="navbar-link">
+            <li  className="navbar-link">
               <Link to="/leaderboard">Leaderboard</Link>
             </li>
-            <li onClick={handleToggle} className="navbar-link">
+            <li  className="navbar-link">
               <Link to="/about">About</Link>
             </li>
             
           
           {user ?  (
-            <li onClick={handleToggle} className="navbar-link">
+            <li  className="navbar-link">
                 <Link to="/account">
-                     Account
+                    Account
                 </Link>
             </li>
                
             )
             : (
-            <li onClick={handleToggle} className="navbar-link">
+            <li  className="navbar-link">
                 <Link to={"/signin"}>
                     Sign In
                 </Link>

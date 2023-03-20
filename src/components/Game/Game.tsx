@@ -155,7 +155,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
   </Link>}
  */}
             <div className='containerGame'>
-                <Header points={points}/>
+                {/* <Header points={points}/> */}
 
 
                
