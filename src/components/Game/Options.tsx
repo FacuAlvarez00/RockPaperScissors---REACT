@@ -47,6 +47,7 @@ const Options: React.FC<props> = ({ setMyChoice }) => {
     <>
 
       <div className='options_container'>
+        <h1 className='titleOptions'>CHOOSE YOUR OPTION</h1>
         <div className='triangleContainer'>
           <img className="triangle" src={triangle} />
         </div>

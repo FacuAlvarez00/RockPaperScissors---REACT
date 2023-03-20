@@ -1,14 +1,14 @@
 .navbar {
   background: rgb(56,12,85);
   background: linear-gradient(180deg, rgba(56,12,85,1) 20%, rgba(72,21,106,1) 47%, rgba(87,16,137,1) 70%);
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(255, 255, 255);
     color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
   
   }
   
@@ -23,11 +23,13 @@
   }
   
   .navbar-logo {
+    display: none;
     font-size: 1.5rem;
     font-weight: bold;
     color: #fff;
     text-decoration: none;
     margin-right: auto;
+    
   }
   
   .navbar-toggle {
@@ -57,18 +59,26 @@
     padding: 0;
     display: none;
     position: absolute;
-    top: 14%;
+    top: 91px;
     left: 0;
     width: 100%;
-    background-color: #333;
+    background-color: #973AA8;
     z-index: 1;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    /* transition: all 0.3s ease-in-out; */
+
   }
+  /* .navbar-link:hover{
+    border-bottom: 2px solid #973AA8;
+  } */
   
   .navbar-links.active {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    height: 50vh;
+    
   }
   
   .navbar-link {
@@ -82,6 +92,17 @@
     font-size: 1.2rem;
     text-transform: uppercase;
   }
+
+  .logoNav{
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: 5px;
+    
+}
   
   @media only screen and (min-width: 768px) {
     .navbar {

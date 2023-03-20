@@ -13,7 +13,8 @@ console.log(user)
 
 
   return (
-    <div className='infoDisplayContainer'>
+    <div className='userDisplayContainer'>
+    <div className='infoDisplay'>
         <div>
             <RxAvatar className='iconUser'/>
         </div>
@@ -25,14 +26,16 @@ console.log(user)
             <span>GUEST</span>
             }
 
-            {points?
-            <span>Score: {points}</span>
+            {points === 0 ?
+            <span>SCORE</span>
+            
             :
-            <span>Score:</span>
+            <span >SCORE <span className='scoreNavbar'>{points}</span></span>
             }
             
         </div>
       
+    </div>
     </div>
   )
 }

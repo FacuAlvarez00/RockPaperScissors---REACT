@@ -19,26 +19,47 @@ const Navbar = () => {
 
         <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
-            <img src={logo}/>
-          </Link> 
+
+        <Link to="/" className="navbar-logo">
+            <div className='logoNav'>
+                <span>ROCK</span>
+                <span>PAPER</span>
+                <span>SCISSORS</span>
+            </div>
+            </Link>
+
+         {/*  {open ?
+            <Link to="/" className="navbar-logo">
+            <div className='logoNav'>
+                <span>ROCK</span>
+                <span>PAPER</span>
+                <span>SCISSORS</span>
+            </div>
+            </Link> :
+          null
+
+          }
+           */}
+        
+          <UserInfoDisplay/>
           <button className="navbar-toggle" onClick={handleToggle}>
             <span className="navbar-toggle-icon"></span>
           </button>
+          
           <ul className={open ? "navbar-links active" : "navbar-links"}>
-            <li className="navbar-link">
+            <li onClick={handleToggle} className="navbar-link">
               <Link to="/">Home</Link>
             </li>
-            <li className="navbar-link">
+            <li onClick={handleToggle} className="navbar-link">
               <Link to="/leaderboard">Leaderboard</Link>
             </li>
-            <li className="navbar-link">
+            <li onClick={handleToggle} className="navbar-link">
               <Link to="/about">About</Link>
             </li>
-         
+            
           
           {user ?  (
-            <li className="navbar-link">
+            <li onClick={handleToggle} className="navbar-link">
                 <Link to="/account">
                      Account
                 </Link>
@@ -46,7 +67,7 @@ const Navbar = () => {
                
             )
             : (
-            <li className="navbar-link">
+            <li onClick={handleToggle} className="navbar-link">
                 <Link to={"/signin"}>
                     Sign In
                 </Link>
@@ -55,10 +76,11 @@ const Navbar = () => {
             }
           
               
-            
+          
              </ul>
-             <UserInfoDisplay/>
+           
         </div>
+        
       </nav>
 
       /*   <div>

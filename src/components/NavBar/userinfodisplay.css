@@ -1,23 +1,33 @@
-.infoDisplayContainer{
+
+.infoDisplay{
+
     display: flex;
     align-items: center;
-    background-color: white;
+    justify-content: center;
+    border-left: 2px solid #8f30d2;
+    border-bottom: 2px solid #8f30d2;
     height: 70px;
     justify-content: space-between;
-  
     border-radius: 8px;
     padding: 0px 10px;
-    color: rgb(56,12,85);
+    color: white;
+    font-weight: 600;
+    font-size: 19px;
+    margin-left: 10px;
 }
 .iconUser{
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
 }
 .textboxNavbar{
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
+    padding: 0 10px;
 }
 .textboxNavbar span{
     margin: 3px 0;
+}
+.scoreNavbar{
+    color: #EA698B; 
+    text-decoration: underline;
 }
