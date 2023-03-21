@@ -1,13 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { UserAuth } from '../../context/AuthContext'
 import {RxAvatar} from "react-icons/rx"
 import "./userinfodisplay.css"
+import { getOrderScore } from '../../firebase'
+
+
 
 
 const UserInfoDisplay = () => {
 
 
-    const {user, points, userAvatar} = UserAuth()
+    const {user, points, userAvatar, setUserAvatar, setAvatarReceived, avatarOption, avatarFromDB, setAvatarFromDB} = UserAuth()
+    
+    
+
+
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const { avatarFromDatabase } = await getOrderScore(
+            user.uid
+          );
+            setAvatarFromDB(avatarFromDatabase)
+            console.log("info traida")
+          
+       
+        } catch (error) {
+          console.log("error");
+        }
+      }
+        fetchData();
+        setAvatarReceived(true);
+       
+    }, [user]);
 
 
 
@@ -15,8 +40,8 @@ const UserInfoDisplay = () => {
     <div className='userDisplayContainer'>
     <div className='infoDisplay'>
         <div>
-            {userAvatar? 
-            <img className="iconDisplay" src={userAvatar}/>
+            {avatarFromDB? 
+            <img className="iconDisplay" src={avatarFromDB}/>
             :
             <RxAvatar className='iconUser'/>     
             } 

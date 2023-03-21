@@ -14,11 +14,14 @@ import "./account.css"
 
 const Account = () => {
 
-    const {user, logOut, handleSignOut, points, timesWon,  timesLost, userAvatar, setUserAvatar} = UserAuth()
+    const {user,handleSignOut, points, timesWon,  timesLost, userAvatar, setUserAvatar, avatarOption,
+    setAvatarOption, avatarFromDB, setAvatarFromDB} = UserAuth()
 
 
     const [userInfo, setUserInfo] = useState<any>()
-    const [avatarReceived, setAvatarReceived] = useState<boolean>()
+    
+
+    /* const [avatarReceived, setAvatarReceived] = useState<boolean>() */
    
   
 
@@ -52,78 +55,33 @@ const Account = () => {
 
               
             };
-          createOrder(order)
-          console.log("pusheado a db")
+            createOrder(order).then(() => {
+              setAvatarFromDB(userAvatar);
+            });
+          
+        
+          
       }
 
-    /*   useEffect(() => {
-        async function fetchData() {
-          try {
-            const {avatarFromDatabase} = await getOrderScore(
-              user.uid
-            );
-            console.log("info traida de db");
-         
-          } catch (error) {
-            console.log("error");
-          }
-        }
-      }, [userAvatar]); */
 
-    /*   async function fetchData() {
-        try {
-          const {avatarFromDatabase} = await getOrderScore(user.uid);
-          setUserAvatar(avatarFromDatabase)
-          console.log("info traida de db");
-       
-        } catch (error) {
-          console.log("error");
-        }
-      }
-   */
 
-      useEffect(() => {
-        async function fetchData() {
-          try {
-            const { avatarFromDatabase } = await getOrderScore(
-              user.uid
-            );
-              setUserAvatar(avatarFromDatabase)
-            /* console.log("info traida de db"); */
-         
-          } catch (error) {
-            console.log("error");
-          }
-        }
-      
-        if (!avatarReceived) {
-          fetchData();
-          setAvatarReceived(true);
-         
-        }
-      }, [avatarReceived]);
-
-    
-
-   
  
   return (
     <div>
 
-       {/*  {userInfo
-        .filter((userdata: any) => {
-          return (
-            userdata.uid === user.uid
-          );
-        })
-        } */}
 
         {user && userInfo?
         <>
         <button className="btnAccount" onClick={handleSignOut}>Log Out</button>
          <div className='accountContainer'>
           <div className='avatarAccount'>
-            <img src={userAvatar}/>
+            {avatarOption ?
+            <img src={avatarOption}/>
+            :
+            <img src={avatarFromDB}/>
+
+            }
+            
 
           </div>
           <h1>{user.displayName}</h1>
@@ -149,13 +107,48 @@ const Account = () => {
       <section className='userPanel'>
         <div>
           
-          <img onClick={() => setAvatar(avatar)} className="avatarPanel" src={avatar} />
-          <img onClick={() => setAvatar(avatar2)} className="avatarPanel" src={avatar2} />
-          <img onClick={() => setAvatar(avatar3)} className="avatarPanel" src={avatar3} />
-          <img onClick={() => setAvatar(avatar4)} className="avatarPanel" src={avatar4} />
-          <img onClick={() => setAvatar(avatar5)} className="avatarPanel" src={avatar5} />
-          <img onClick={() => setAvatar(avatar6)} className="avatarPanel" src={avatar6} />
-          <img onClick={() => setAvatar(avatar7)} className="avatarPanel" src={avatar7} />
+          <img onClick={() =>
+          {
+            setAvatar(avatar);
+            setAvatarOption(avatar)
+          }
+          } className="avatarPanel" src={avatar} />
+
+          <img onClick={() =>
+          {
+            setAvatar(avatar2);
+            setAvatarOption(avatar2)
+          }
+          } className="avatarPanel" src={avatar2} />
+
+          <img onClick={() =>
+          {
+            setAvatar(avatar3);
+            setAvatarOption(avatar3)
+          }
+          } className="avatarPanel" src={avatar3} />
+
+          <img onClick={() =>
+          {
+            setAvatar(avatar4);
+            setAvatarOption(avatar4)
+          }
+          } className="avatarPanel" src={avatar4} />
+
+          <img onClick={() =>
+          {
+            setAvatar(avatar5);
+            setAvatarOption(avatar5)
+          }
+          } className="avatarPanel" src={avatar5} />
+
+          <img onClick={() =>
+          {
+            setAvatar(avatar6);
+            setAvatarOption(avatar6)
+          }
+          } className="avatarPanel" src={avatar6} />
+
 
         </div>
         <button onClick={sendAvatar}>Save changes</button>

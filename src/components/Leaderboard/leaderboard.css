@@ -64,8 +64,21 @@
     background-color: goldenrod !important;
     border-radius: 12px;
   }
+  .avatarLeaderboard{
+    background-color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
 
-  
+  }
+  .avatarLeaderboard img{
+    width: 50px;
+    height: 50px;
+  }
+  .guestLeaderboard{
+    width: 50px;
+    height: 50px;
+  }
   .playerLogued span:first-child {
     font-size: 15px;
     flex-basis: 24%;

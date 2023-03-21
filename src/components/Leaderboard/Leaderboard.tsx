@@ -3,6 +3,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { getUserInfo } from '../../firebase';
 import "./leaderboard.css"
 import { MdLeaderboard } from 'react-icons/md';
+import {RxAvatar} from "react-icons/rx"
 
 
 
@@ -10,7 +11,7 @@ import { MdLeaderboard } from 'react-icons/md';
 const Leaderboard = () => {
 
     const [usersInfo, setUsersInfo] = useState<any>()
-    const {points, user} = UserAuth()
+    const {points, user, avatarFromDB} = UserAuth()
 
     useEffect(() => {
         async function fetchData() {
@@ -68,6 +69,10 @@ const Leaderboard = () => {
       userData.id.toLowerCase().includes(keyword.toLowerCase())
       ).map((filteredData: any) => 
       <div className="playerLogued" key={filteredData.id}>
+
+        <div className="avatarLeaderboard">
+          <img src={avatarFromDB}/>
+        </div>
         <span>YOU</span>
         <span>{filteredData.wins}</span>
         <span>{filteredData.looses}</span>
@@ -80,6 +85,18 @@ const Leaderboard = () => {
         {usersInfo? 
         usersInfo.sort(compareScores).map((users: any) => (
           <div className="playerdata" key={users.userinfo}>
+            <span>
+              {users.avatar? 
+              <div className='avatarLeaderboard'>
+                <img className='' src={users.avatar}/>
+              </div>
+              
+              :
+              <RxAvatar className='guestLeaderboard'/>
+
+              }
+              
+            </span>
             <span>{users.googleUserName}</span>
             <span>{users.wins}</span>
             <span>{users.looses}</span>
