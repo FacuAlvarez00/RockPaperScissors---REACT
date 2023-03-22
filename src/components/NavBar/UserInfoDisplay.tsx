@@ -10,7 +10,7 @@ import { getOrderScore } from '../../firebase'
 const UserInfoDisplay = () => {
 
 
-    const {user, points, userAvatar, setUserAvatar, setAvatarReceived, avatarOption, avatarFromDB, setAvatarFromDB} = UserAuth()
+    const {user, points, setPoints , userAvatar, setUserAvatar, setAvatarReceived, avatarOption, avatarFromDB, setAvatarFromDB} = UserAuth()
     
     
 
@@ -18,11 +18,12 @@ const UserInfoDisplay = () => {
     useEffect(() => {
       async function fetchData() {
         try {
-          const { avatarFromDatabase } = await getOrderScore(
+          const { avatarFromDatabase, scoreFromDatabase } = await getOrderScore(
             user.uid
           );
             setAvatarFromDB(avatarFromDatabase)
-            console.log("info traida")
+            setPoints(scoreFromDatabase);
+            
           
        
         } catch (error) {
@@ -34,7 +35,7 @@ const UserInfoDisplay = () => {
        
     }, [user]);
 
-
+    console.log(points)
 
   return (
     <div className='userDisplayContainer'>
@@ -56,12 +57,15 @@ const UserInfoDisplay = () => {
             <span>GUEST</span>
             }
 
-            {points === 0 ?
-            <span>SCORE</span>
-            
+            {points === 0?
+            <span >SCORE </span>
             :
             <span >SCORE <span className='scoreNavbar'>{points}</span></span>
+            
+
+            
             }
+            
             
         </div>
       

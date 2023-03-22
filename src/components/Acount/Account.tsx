@@ -87,7 +87,10 @@ const Account = () => {
 
       {user && userInfo ?
         <>
-          <button className="btnAccount" onClick={handleSignOut}>Log Out</button>
+        <div className='btnAccount'>
+          <button onClick={handleSignOut}>Log Out</button>
+        </div>
+          
           <div className='accountContainer'>
             <div className='avatarAccount'>
               {avatarOption ?
@@ -115,7 +118,9 @@ const Account = () => {
 
 
       <section className='userPanel'>
+        <p>Choose your avatar</p>
         <div>
+          
 
           {avatars.map(avatar =>
             <img onClick={() => {
@@ -127,10 +132,11 @@ const Account = () => {
           }
 
         </div>
+        
         <button onClick={sendAvatar}>Save changes</button>
 
-
       </section>
+      
 
     </div>
   )

@@ -53,7 +53,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
     const [counter, setCounter] = useState(3);
 
 
-    const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost} = UserAuth()
+    const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost, userAvatar} = UserAuth()
     
     
 
@@ -77,11 +77,13 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
     function sendInfo() {
         const order = {
+
             userinfo: user?.uid,
             googleUserName: user?.displayName,
             score: points,
             looses: timesLost,
             wins: timesWon,
+            avatar: userAvatar,
             date: new Date(),
           };
         createOrder(order)
@@ -139,9 +141,9 @@ const Game: React.FC<props> = ({ myChoice }) => {
             };
           }, [counter, computerChoice]);
 
-       /*  useEffect(() => {
+         useEffect(() => {
             sendInfo()
-          }, [points]); */
+          }, [points]); 
         
         
 

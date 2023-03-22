@@ -32,6 +32,7 @@
     width: 100%;
     border: 2px solid #6f2e9d;
     justify-content: space-around;
+    
   
     margin-bottom: 10px;
     font-weight: 600;
@@ -41,6 +42,9 @@
     padding: 5px 0;
     margin-bottom: 20px;
   }
+ /*  .dataReference span:first-child{
+    margin-left: 20px;
+  } */
   
   .playerdata {
     display: flex;
@@ -69,39 +73,71 @@
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    
+    
 
   }
   .avatarLeaderboard img{
     width: 50px;
     height: 50px;
+    
   }
-  .guestLeaderboard{
+  .guestLeaderboardContainer{
+ 
+    border-radius: 50%;
     width: 50px;
     height: 50px;
   }
-  .playerLogued span:first-child {
-    font-size: 15px;
-    flex-basis: 24%;
-    padding-left: 15px;
-  }
-  
-  .playerLogued span:nth-child(2) {
-    flex-basis: 10%;
-    padding-left: 4px;
- 
-  }
-  
-  .playerLogued span:nth-child(3) {
-    flex-basis: 20%;
-    text-align: center;
-    padding-right: 6px;
-  }
-  
-  .playerLogued span:nth-child(4) {
-    flex-basis: 16%;
-    padding-left: 6px;
+  .guestLeaderboardIcon{
+    width: 50px;
+    height: 50px;
+
   }
 
+
+ 
+ .playerLogued:nth-child(even) {
+  background-color: #C05299;
+  border-radius: 12px;
+  
+}
+
+.playerLogued:first-child {
+  font-size: 1.3rem;
+  font-weight: bold;
+  
+  
+}
+
+.playerLogued span:first-child {
+  font-size: 15px;
+  flex-basis: 10%;
+  
+  
+}
+
+.playerLogued span:nth-child(2) {
+  flex-basis: 10%;
+  padding-left: 4px;
+
+}
+
+.playerLogued span:nth-child(3) {
+  flex-basis: 9%;
+  
+  padding-right: 6px;
+}
+
+.playerLogued span:nth-child(4) {
+  flex-basis: 14%;
+  padding-left: 6px;
+}
+.playerLogued span:nth-child(5) {
+  flex-basis: 12%;
+  padding-left: 6px;
+}
+
+  
   .playerdata:nth-child(even) {
     background-color: #C05299;
     border-radius: 12px;
@@ -117,8 +153,8 @@
   
   .playerdata span:first-child {
     font-size: 15px;
-    flex-basis: 24%;
-    padding-left: 10px;
+    flex-basis: 10%;
+    /* padding-left: 10px; */
     
   }
   
@@ -129,23 +165,23 @@
   }
   
   .playerdata span:nth-child(3) {
-    flex-basis: 20%;
-    text-align: center;
+    flex-basis: 9%;
+    
     padding-right: 6px;
   }
   
   .playerdata span:nth-child(4) {
-    flex-basis: 16%;
+    flex-basis: 11%;
     padding-left: 6px;
   }
-
-
-
-
-
-
-
-
+  .playerdata span:nth-child(5) {
+    flex-basis: 12%;
+    padding-left: 6px;
+  }
+.blankSpace{
+  width: 32px;
+  height: 19px;
+}
 
 
 

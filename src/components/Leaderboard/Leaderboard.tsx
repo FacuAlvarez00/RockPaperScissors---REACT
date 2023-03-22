@@ -53,9 +53,12 @@ const Leaderboard = () => {
           
 
         <div className='dataReference'>
-
+          <span className='blankSpace'>
+           
+            </span>
           <span>Name</span>
           <span>Wins</span>
+
           <span>Looses</span>
           <span>Score</span>
 
@@ -70,10 +73,10 @@ const Leaderboard = () => {
       ).map((filteredData: any) => 
       <div className="playerLogued" key={filteredData.id}>
 
-        <div className="avatarLeaderboard">
+        <span className="avatarLeaderboard">
           <img src={avatarFromDB}/>
-        </div>
-        <span>YOU</span>
+        </span>
+        <span>Facundo Alvarez</span>
         <span>{filteredData.wins}</span>
         <span>{filteredData.looses}</span>
         <span>{filteredData.score}</span>
@@ -85,18 +88,22 @@ const Leaderboard = () => {
         {usersInfo? 
         usersInfo.sort(compareScores).map((users: any) => (
           <div className="playerdata" key={users.userinfo}>
-            <span>
+            <>
               {users.avatar? 
-              <div className='avatarLeaderboard'>
+              <span className='avatarLeaderboard'>
                 <img className='' src={users.avatar}/>
-              </div>
+              </span>
               
               :
-              <RxAvatar className='guestLeaderboard'/>
+              <span className='guestLeaderboardContainer'>
+                <RxAvatar className="guestLeaderboardIcon"/>
+
+              </span>
+              
 
               }
               
-            </span>
+            </>
             <span>{users.googleUserName}</span>
             <span>{users.wins}</span>
             <span>{users.looses}</span>

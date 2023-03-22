@@ -26,7 +26,12 @@ const Navbar = () => {
                 <span>PAPER</span>
                 <span>SCISSORS</span>
             </div>
+
             </Link>
+            {/* 
+            <div className='logoNavMobile'>
+              <span>RPS</span>
+            </div> */}
 
          {/*  {open ?
             <Link to="/" className="navbar-logo">
