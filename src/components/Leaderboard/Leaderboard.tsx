@@ -4,6 +4,9 @@ import { getUserInfo } from '../../firebase';
 import "./leaderboard.css"
 import { MdLeaderboard } from 'react-icons/md';
 import {RxAvatar} from "react-icons/rx"
+import {ColorRing} from 'react-loader-spinner'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 
@@ -29,12 +32,13 @@ const Leaderboard = () => {
 
     
 
-      const keyword = user.uid
-
+      
+      const keyword = user?.uid || null;
 
      
 
-     if (user && usersInfo){
+      if (user && usersInfo){
+        
         const userLogued = usersInfo.filter((userData: any) =>
         userData.id.toLowerCase().includes(keyword.toLowerCase()) 
         )
@@ -44,7 +48,7 @@ const Leaderboard = () => {
      
     
   return (
-    <>
+    <div className='leaderboardContainer'>
         <div className='dataContainer__header'>
             <MdLeaderboard className='icon'/>
             <h1>USER LEADERBOARD</h1>
@@ -76,13 +80,14 @@ const Leaderboard = () => {
         <span className="avatarLeaderboard">
           <img src={avatarFromDB}/>
         </span>
-        <span>Facundo Alvarez</span>
+        <span>You</span>
         <span>{filteredData.wins}</span>
         <span>{filteredData.looses}</span>
         <span>{filteredData.score}</span>
       </div>
       )
-      : null
+      :
+      null
       }
  
         {usersInfo? 
@@ -110,15 +115,35 @@ const Leaderboard = () => {
             <span>{users.score}</span>
   
           </div>
-        )) : <p>Loading...</p>
+        )) : 
+
+         <div className='loaderLeaderboard'>
+          <ColorRing 
+          visible={true}
+         
+          height="150"
+          width="150"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+        />
     
-    }
 
+    </div> 
+    
+/* <>
+    <Skeleton />
+    <Skeleton count={5} />
+   
+</> */
+    
+    } 
 
-      
     </div>
+    
 
-    </>
+    </div>
   )
 }
 

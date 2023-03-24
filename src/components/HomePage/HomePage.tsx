@@ -53,7 +53,7 @@ useEffect(() => {
       setPoints(scoreFromDatabase);
       setTimesWon(winsFromDatabase)
       setTimesLost(loosesFromDatabase)
-      console.log("info traida de db");
+     
    
     } catch (error) {
       console.log("error");

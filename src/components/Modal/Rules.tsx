@@ -29,7 +29,7 @@ const Rules = () => {
             <h1>RULES</h1>
             <img src={rulesSVG}/>
             <button className="close-modal" onClick={toggleModal}>
-              <img src={close}/>
+              X
             </button>
           </div>
         </div>

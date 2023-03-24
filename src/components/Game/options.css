@@ -2,7 +2,6 @@
   margin-bottom: 100px;
   text-align: center;
   color: white;
-  
 }
 .icons{
     width: 50px;
@@ -13,8 +12,7 @@
     position: relative;
     width: 100%;
     height: 40vh;
-    margin-bottom: 170px;
-
+    margin: 60px 0px 170px 0px;
 }
 .items{
     height: 270px;
@@ -38,7 +36,6 @@
     gap: 40%;
     margin-bottom: 10px;
     bottom: 40px;
-
 }
 .bottomCircle{
     position: relative;
@@ -79,3 +76,52 @@
   }
   
  
+
+  @media only screen and (min-width: 1000px) {
+    .titleOptions{
+      margin-bottom: 100px;
+      font-size: 45px;
+      text-align: center;
+      color: white;
+    }
+    .topContainer{
+      gap: 10%;
+  }
+  .icons{
+    width: 65px;
+    height: 65px;
+}
+    
+  .circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+  }
+  .bottomCircle{
+    top: 30px;
+  
+  }
+  .triangle{
+  width: 400px;
+  height: 300px;
+  } 
+  .options_container {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    margin-bottom: 170px;
+
+}
+  
+  
+
+   
+
+
+  }

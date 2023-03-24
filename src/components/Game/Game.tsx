@@ -149,13 +149,8 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
     return (
         <>
-{/*            {disabled? (
-  null
-):
-<Link to="/">
-    <button>Home</button>
-  </Link>}
- */}
+
+ 
             <div className='containerGame'>
                 {/* <Header points={points}/> */}
 
@@ -203,10 +198,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
                
                 
 
-              
-               {/* <button onClick={bringPointsFromDatabase}>bringPointsFromDatabase</button>  */}
-               {/*  <button onClick={enableScore}>Enable score from db</button> */}
-                {/* <button onClick={sendInfo}>Send info</button> */}
+            
             </div>
         </>
     );

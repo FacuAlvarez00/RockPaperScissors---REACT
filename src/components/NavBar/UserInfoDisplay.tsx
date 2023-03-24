@@ -35,7 +35,7 @@ const UserInfoDisplay = () => {
        
     }, [user]);
 
-    console.log(points)
+    
 
   return (
     <div className='userDisplayContainer'>
