@@ -38,8 +38,9 @@ const UserInfoDisplay = () => {
     
 
   return (
-    <div className='userDisplayContainer'>
+   
     <div className='infoDisplay'>
+      
         <div>
             {avatarFromDB? 
             <img className="iconDisplay" src={avatarFromDB}/>
@@ -65,12 +66,10 @@ const UserInfoDisplay = () => {
 
             
             }
-            
-            
         </div>
       
     </div>
-    </div>
+  
   )
 }
 

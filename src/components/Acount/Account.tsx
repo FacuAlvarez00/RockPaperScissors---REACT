@@ -82,14 +82,19 @@ const Account = () => {
 
 
   return (
-    <div>
+    <section className='account'>
+
+      
+    <div className='accountPanel'>
+
+    
 
 
       {user && userInfo ?
         <>
-        <div className='btnAccount'>
+       {/*  <div className='btnAccount'>
           <button onClick={handleSignOut}>Log Out</button>
-        </div>
+        </div> */}
           
           <div className='accountContainer'>
             <div className='avatarAccount'>
@@ -102,7 +107,7 @@ const Account = () => {
 
 
             </div>
-            <h1>{user.displayName}</h1>
+            <h1 className='greetingsTitle'>Welcome back,<br></br> {user.displayName}</h1>
             <div className='accountData'>
               <p>Your current points are: {points}</p>
               <p>You won: {data[0].wins} times</p>
@@ -118,7 +123,7 @@ const Account = () => {
 
 
       <section className='userPanel'>
-        <p>Choose your avatar</p>
+        <p>CHOOSE YOUR AVATAR</p>
         <div>
           
 
@@ -139,6 +144,8 @@ const Account = () => {
       
 
     </div>
+
+    </section>
   )
 }
 

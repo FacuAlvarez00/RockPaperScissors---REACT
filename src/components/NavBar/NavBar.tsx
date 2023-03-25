@@ -46,10 +46,8 @@ const Navbar = () => {
           }
            */}
         
-          <UserInfoDisplay/>
-          <button className="navbar-toggle" onClick={handleToggle}>
-            <span className="navbar-toggle-icon"></span>
-          </button>
+          
+        
           
           <ul className={open ? "navbar-links active" : "navbar-links"}>
             <li  className="navbar-link">
@@ -83,6 +81,11 @@ const Navbar = () => {
               
           
              </ul>
+             <UserInfoDisplay/>
+
+             <button className="navbar-toggle" onClick={handleToggle}>
+                <span className="navbar-toggle-icon"></span>
+            </button>
            
         </div>
         

@@ -139,3 +139,9 @@
       width: auto;
     }
   }
+  @media only screen and (min-width: 1000px){
+    .logoNav{
+      font-size: 30px;
+    }
+
+  }

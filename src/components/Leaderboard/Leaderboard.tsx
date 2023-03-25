@@ -48,73 +48,97 @@ const Leaderboard = () => {
      
     
   return (
-    <div className='leaderboardContainer'>
-        <div className='dataContainer__header'>
-            <MdLeaderboard className='icon'/>
-            <h1>USER LEADERBOARD</h1>
-          </div>
-        <div className='dataContainer'>
+  
+    <section className='leaderboard'>
+
+    
+    <div className='dataContainer__header'>
+      <MdLeaderboard className='icon'/>
+
+      <h1>USER LEADERBOARD</h1>
+
+    </div>
+
+    <table className='leaderboardContainer'>
+       
+        
           
 
-        <div className='dataReference'>
-          <span className='blankSpace'>
-           
-            </span>
-          <span>Name</span>
-          <span>Wins</span>
+        <thead className='dataReference'>
 
-          <span>Looses</span>
-          <span>Score</span>
+          <tr>
+            <th>
+            {/* <span className='blankSpace'></span> */}
+            <span>Avatar</span>
+            </th>
 
-        </div>
+            <th>
+              <span>Name</span>
+            </th>
+
+            <th>
+              <span>Won</span>
+            </th>
+
+            <th>
+              <span>Lost</span>
+            </th>
+
+            <th>
+              <span>Score</span>
+            </th>
+          </tr>
+        
+        </thead>
 
     
 
-
-      {usersInfo && user? 
+      <tbody>
+       {usersInfo && user? 
       usersInfo.filter((userData: any) =>
       userData.id.toLowerCase().includes(keyword.toLowerCase())
       ).map((filteredData: any) => 
-      <div className="playerLogued" key={filteredData.id}>
+      <tr className="playerLogued" key={filteredData.id}>
 
-        <span className="avatarLeaderboard">
+        <td className="avatarLeaderboard">
           <img src={avatarFromDB}/>
-        </span>
-        <span>You</span>
-        <span>{filteredData.wins}</span>
-        <span>{filteredData.looses}</span>
-        <span>{filteredData.score}</span>
-      </div>
+        </td>
+        <td>You</td>
+        <td>{filteredData.wins}</td>
+        <td>{filteredData.looses}</td>
+        <td>{filteredData.score}</td>
+      </tr>
       )
       :
       null
       }
- 
+         
+
+      
         {usersInfo? 
         usersInfo.sort(compareScores).map((users: any) => (
-          <div className="playerdata" key={users.userinfo}>
+          <tr className="playerdata" key={users.userinfo}>
             <>
               {users.avatar? 
-              <span className='avatarLeaderboard'>
+              <td className='avatarLeaderboard'>
                 <img className='' src={users.avatar}/>
-              </span>
-              
+              </td>
+      
               :
-              <span className='guestLeaderboardContainer'>
+              <td className='guestLeaderboardContainer'>
                 <RxAvatar className="guestLeaderboardIcon"/>
-
-              </span>
+              </td>
               
 
               }
               
             </>
-            <span>{users.googleUserName}</span>
-            <span>{users.wins}</span>
-            <span>{users.looses}</span>
-            <span>{users.score}</span>
+            <td>{users.googleUserName}</td>
+            <td>{users.wins}</td>
+            <td>{users.looses}</td>
+            <td>{users.score}</td>
   
-          </div>
+          </tr>
         )) : 
 
          <div className='loaderLeaderboard'>
@@ -140,10 +164,12 @@ const Leaderboard = () => {
     
     } 
 
-    </div>
+ 
     
-
-    </div>
+      </tbody>
+    </table>
+  
+    </section>
   )
 }
 

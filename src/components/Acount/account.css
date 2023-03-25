@@ -1,26 +1,38 @@
+.accountPanel{
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
 .accountContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
-.avatarAccount{
+.accountPanel{
+    background-color: #C05299;
+    padding: 20px 0;
     
+}
+.avatarAccount{
     background-color: white;
     border-radius: 50%;
     width: 200px;
     height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .avatarAccount img{
     width: 100%;
     height: 100%;
-    
-    
 
+}
+.greetingsTitle{
+
+    color: white;
+    text-align: center;
 }
 .accountContainer h1{
     font-size: 27px;
     margin-top: 10px;
+    color: #571089;
 }
 .accountData{
     color: white;
@@ -37,6 +49,7 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    
 
 }
 .btnAccount button{
@@ -61,16 +74,15 @@
     color: white;
     font-size: 22px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-decoration: underline;
-
 }
 .userPanel div{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 .userPanel button{
     display: block;
@@ -82,6 +94,9 @@
     border: none;
     font-weight: 600;
     color: #571089;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
 }
 .avatarPanel{
     width: 80px;
@@ -90,4 +105,55 @@
     cursor: pointer;
     margin-right: 10px;
     border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    
+}
+.avatarPanel:hover{
+    scale: 105%;
+    
+}
+@media only screen and (min-width: 1000px) {
+    .account{
+        display: flex;
+        justify-content: center;
+                
+    }
+   
+    .accountPanel{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 7rem;
+        background-color: #C05299;
+        width: 1300px;
+        
+        border-radius: 10px;
+        padding: 50px 0;
+    }
+    .accountContainer h1{
+        font-size: 27px;
+        margin-top: 10px;
+        color: #571089;
+    }
+    .userPanel{
+        width: 500px;
+        border-left: 2px solid white;
+        padding: 0px 10px;
+    }
+    
+    .userPanel p{
+        color: white;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 18px;
+        text-decoration: none;
+
+    }
+    .accountData p{
+        margin: 5px 0;
+        font-size: 20px;
+    }
+    
+
+
 }

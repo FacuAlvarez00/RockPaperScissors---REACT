@@ -13,6 +13,8 @@
     font-weight: 600;
     font-size: 19px;
     margin-left: 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 .iconUser{
     width: 60px;
@@ -35,4 +37,33 @@
 .scoreNavbar{
     color: #EA698B; 
     text-decoration: underline;
+}
+@media only screen and (min-width: 1000px) {
+    .infoDisplay{
+        height: 90px;
+    }
+    .iconUser{
+        width: 70px;
+        height: 70px;
+    }
+    .iconDisplay{
+        width: 70px;
+        height: 70px;
+        background-color: white;
+        border-radius: 50%;
+    }
+    .textboxNavbar{
+        padding: 0 14px;
+    }
+    .textboxNavbar span{
+        margin: 3px 0;
+    }
+    .scoreNavbar{
+        color: #EA698B; 
+        text-decoration: underline;
+    }
+
+
+
+
 }
