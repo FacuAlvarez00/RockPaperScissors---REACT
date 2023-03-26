@@ -82,6 +82,12 @@ const Account = () => {
 
 
   return (
+    <>
+    
+    <div className='btnAccount'>
+      <button onClick={handleSignOut}>Log Out</button>
+    </div> 
+    
     <section className='account'>
 
       
@@ -92,9 +98,7 @@ const Account = () => {
 
       {user && userInfo ?
         <>
-       {/*  <div className='btnAccount'>
-          <button onClick={handleSignOut}>Log Out</button>
-        </div> */}
+       
           
           <div className='accountContainer'>
             <div className='avatarAccount'>
@@ -146,6 +150,7 @@ const Account = () => {
     </div>
 
     </section>
+    </>
   )
 }
 
