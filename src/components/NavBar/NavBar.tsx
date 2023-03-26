@@ -51,19 +51,19 @@ const Navbar = () => {
           
           <ul className={open ? "navbar-links active" : "navbar-links"}>
             <li  className="navbar-link">
-              <Link to="/">Home</Link>
+              <Link className='navbar-link-style' to="/">Home</Link>
             </li>
             <li  className="navbar-link">
-              <Link to="/leaderboard">Leaderboard</Link>
+              <Link className='navbar-link-style' to="/leaderboard">Leaderboard</Link>
             </li>
             <li  className="navbar-link">
-              <Link to="/about">About</Link>
+              <Link className='navbar-link-style' to="/about">About</Link>
             </li>
             
           
           {user ?  (
             <li  className="navbar-link">
-                <Link to="/account">
+                <Link className='navbar-link-style' to="/account">
                     Account
                 </Link>
             </li>
@@ -71,7 +71,7 @@ const Navbar = () => {
             )
             : (
             <li  className="navbar-link">
-                <Link to={"/signin"}>
+                <Link  className='navbar-link-style' to={"/signin"}>
                     Sign In
                 </Link>
             </li>

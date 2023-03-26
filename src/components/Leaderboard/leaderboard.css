@@ -214,6 +214,13 @@ table tr{
   }
   .dataContainer__header{
     width: 70%;
+    gap: 20px;
+  }
+  .dataContainer__header h1{
+    font-size: 40px;
+}
+  .icon{
+    font-size: 44px;
   }
   .leaderboardContainer{
   width: 70%;

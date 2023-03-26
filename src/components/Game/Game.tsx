@@ -148,7 +148,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
         
 
     return (
-        <>
+        <section className='game'>
 
  
             <div className='containerGame'>
@@ -159,7 +159,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
                 <div className='chosesContainer'>
 
                 <div className='houseChoice'>
-                <span>YOU PICKED</span>
+                <span className='circleHeader'>YOU PICKED</span>
 
                      
                         <div className='circleGame circleUser circleUser'>
@@ -169,7 +169,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
                 </div>
 
                     <div className='houseChoice'>
-                    <span>THE HOUSE PICKED</span>
+                    <span className='circleHeader'>THE HOUSE PICKED</span>
                     {counter === 0 ? (
                         <div className='circleGame circleHouse circleHouse'>
                             <img className='iconsGame' src={computerChoice && computerChoice.img}></img>
@@ -200,7 +200,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
             
             </div>
-        </>
+        </section>
     );
 };
 

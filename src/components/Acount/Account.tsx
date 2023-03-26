@@ -8,7 +8,7 @@ import avatar4 from "../../assets/avatars/avatar-svgrepo-com(3).svg"
 import avatar5 from "../../assets/avatars/avatar-svgrepo-com(4).svg"
 import avatar6 from "../../assets/avatars/avatar-svgrepo-com(5).svg"
 import avatar7 from "../../assets/avatars/avatar-svgrepo-com(6).svg"
-import { getOrderScore } from '../../firebase'
+import { ColorRing } from 'react-loader-spinner'
 import "./account.css"
 
 
@@ -83,73 +83,84 @@ const Account = () => {
 
   return (
     <>
-    
-    <div className='btnAccount'>
-      <button onClick={handleSignOut}>Log Out</button>
-    </div> 
-    
-    <section className='account'>
 
-      
-    <div className='accountPanel'>
-
-    
-
-
-      {user && userInfo ?
-        <>
-       
-          
-          <div className='accountContainer'>
-            <div className='avatarAccount'>
-              {avatarOption ?
-                <img src={avatarOption} />
-                :
-                <img src={avatarFromDB} />
-
-              }
-
-
-            </div>
-            <h1 className='greetingsTitle'>Welcome back,<br></br> {user.displayName}</h1>
-            <div className='accountData'>
-              <p>Your current points are: {points}</p>
-              <p>You won: {data[0].wins} times</p>
-              <p>You lost: {data[0].looses} times</p>
-
-            </div>
-
+          <div className='btnAccount'>
+            <button onClick={handleSignOut}>Log Out</button>
           </div>
-        </>
-        :
-        <span>Loading...</span>
-      }
+
+      <section className='account'>
+      
 
 
-      <section className='userPanel'>
-        <p>CHOOSE YOUR AVATAR</p>
-        <div>
-          
+        <div className='accountPanel'>
 
-          {avatars.map(avatar =>
-            <img onClick={() => {
-              setAvatar(avatar);
-              setAvatarOption(avatar)
-            }
-            } className="avatarPanel" src={avatar} />
-          )
+        
+
+
+
+          {user && userInfo ?
+            <>
+
+
+              <div className='accountContainer'>
+                <div className='avatarAccount'>
+                  {avatarOption ?
+                    <img src={avatarOption} />
+                    :
+                    <img src={avatarFromDB} />
+
+                  }
+
+
+                </div>
+                <h1 className='greetingsTitle'>Welcome back,<br></br> {user.displayName}</h1>
+                <div className='accountData'>
+                  <p>Your current points are: {points}</p>
+                  <p>You won: {data[0].wins} times</p>
+                  <p>You lost: {data[0].looses} times</p>
+
+                </div>
+
+              </div>
+            </>
+            :
+            <ColorRing
+              visible={true}
+
+              height="150"
+              width="150"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            />
           }
 
+
+          <section className='userPanel'>
+            <p>CHOOSE YOUR AVATAR</p>
+            <div>
+
+
+              {avatars.map(avatar =>
+                <img onClick={() => {
+                  setAvatar(avatar);
+                  setAvatarOption(avatar)
+                }
+                } className="avatarPanel" src={avatar} />
+              )
+              }
+
+            </div>
+
+            <button onClick={sendAvatar}>Save changes</button>
+
+          </section>
+
+
         </div>
-        
-        <button onClick={sendAvatar}>Save changes</button>
 
       </section>
-      
-
-    </div>
-
-    </section>
     </>
   )
 }

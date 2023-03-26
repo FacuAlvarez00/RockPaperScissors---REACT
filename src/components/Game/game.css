@@ -79,7 +79,58 @@
     border: none;
     font-weight: 600;
     color: #571089;
-    
+    cursor: pointer;
   }
 
- 
+  @media only screen and (min-width: 1000px) {
+    .game{
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+    }
+    .containerGame{
+      display: flex;
+      flex-direction: column;
+      justify-content: unset;
+      width: 800px;
+    }
+    .chosesContainer{
+      padding: 0;
+    }
+    .circleGame{
+      width: 240px;
+      height: 240px;
+    }
+    .iconsGame{
+      width: 100px;
+      height: 100px;
+    }
+    .emptyCircle{
+      width: 250px;
+      height: 250px;
+  }
+  .emptyCircle span{
+    font-size: 80px;
+}
+.circleHeader{
+  font-size: 29px;
+}
+.textboxGame span{
+  color: white;
+  font-size: 42px;
+  font-weight: bold;
+}
+.textboxGame button{
+  margin-top: 10px;
+  width: 220px;
+  padding: 12px 0;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  color: #571089;
+  
+}
+
+
+  }

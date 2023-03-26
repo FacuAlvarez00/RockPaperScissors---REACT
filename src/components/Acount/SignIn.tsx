@@ -40,21 +40,15 @@ const SignIn = () => {
 
   return (
     <>
-    {/* <section className='signSection'>
-        
-      
-/>
-   
-      
-    </section> */}
-    
 
-    <div className="snip1214">
-        <div className='signinHeader'>
+    <div className='signinHeader'>
             <h1>CHOOSE WISELY</h1>
-            <p>I encourage you to sign in to help me improve this app. <BiHappyAlt className='headerLogo'/></p>
+            <p>I encourage you to sign in to help me improve this app  <BiHappyAlt className='headerLogo'/></p>
 
         </div>
+
+    <div className="snip1214">
+    
      
 
   <div className="plan">
@@ -118,7 +112,10 @@ const SignIn = () => {
     </div> 
    
     </div>
+
+    
   </div>
+  <p className='signinDisclaimer'>*This application uses Google's Firebase API to provide login functionality. None of your Google account data would be at risk. *</p>
   </>
   )
 }
