@@ -34,7 +34,7 @@ function App() {
       <BrowserRouter>
         <AuthContextProvider>
           <NavBar/>
-          <GuestOrLog/>
+          {/* <GuestOrLog/> */}
           <Routes>
             <Route path="/" element={<HomePage setMyChoice={setMyChoice} />} />
             <Route path="/game" element={<Game myChoice={myChoice}/>} />

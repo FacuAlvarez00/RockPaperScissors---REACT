@@ -73,8 +73,7 @@ useEffect(() => {
    <main className=''>
 
    
-    {/*  <Header points={points}/> */}
-     {/* <Account/> */}
+
      <Options setMyChoice={setMyChoice}/>
      <Rules/>
      </main>
