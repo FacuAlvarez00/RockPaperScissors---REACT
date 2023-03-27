@@ -23,6 +23,7 @@ interface IAuthContext {
   avatarReceived: any
   avatarFromDB: any
   setAvatarFromDB: any
+
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
@@ -36,7 +37,7 @@ interface IAuthContextProviderProps {
 
 export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
 
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState<any>(null)
   const [points, setPoints] = useState<any>(0);
   const [timesWon, setTimesWon] =  useState<any>(0)
   const [timesLost, setTimesLost] =  useState<any>(0)
@@ -44,19 +45,15 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
   const [avatarOption, setAvatarOption] = useState<any>()
   const [avatarReceived, setAvatarReceived] = useState<boolean>()
   const [avatarFromDB, setAvatarFromDB] = useState<any>()
+
+
  
-
-
-
- /*  useEffect(() => {
-    localStorage.setItem("score", JSON.stringify(points))
-  }, [points]); */
-
 
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider()
         signInWithPopup(auth, provider)
         localStorage.setItem("userAlreadyPlayed", "true");
+        
     }
 
     const logOut = () => {
@@ -85,11 +82,34 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
       const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
         setUser(currentUser)
         
+        
       })
       return () => {
         unsubscribe()
       }
     }, [])
+
+
+
+
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          
+          const { avatarFromDatabase, scoreFromDatabase } = await getOrderScore(
+            user.uid
+          );
+            setAvatarFromDB(avatarFromDatabase)
+            setUserAvatar(avatarFromDatabase)
+            setPoints(scoreFromDatabase);
+        } catch (error) {
+          
+        }
+      }
+        fetchData();
+        setAvatarReceived(true);
+       
+    }, [user]);
 
     
 

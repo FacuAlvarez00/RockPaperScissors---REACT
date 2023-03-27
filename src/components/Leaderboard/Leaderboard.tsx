@@ -42,8 +42,14 @@ const Leaderboard = () => {
         const userLogued = usersInfo.filter((userData: any) =>
         userData.id.toLowerCase().includes(keyword.toLowerCase()) 
         )
-  
       }
+
+
+      
+     
+    
+
+      
      
      
     
@@ -100,10 +106,18 @@ const Leaderboard = () => {
       ).map((filteredData: any) => 
       <tr className="playerLogued" key={filteredData.id}>
 
-        <td className="avatarLeaderboard">
+        {avatarFromDB ?
+         <td className='avatarLeaderboard'>
           <img src={avatarFromDB}/>
         </td>
-        <td>You</td>
+        :
+        <td className='guestLeaderboardContainer'>
+          <RxAvatar className="guestLeaderboardIcon"/>
+        </td>
+        }
+    
+
+        <td>YOU</td>
         <td>{filteredData.wins}</td>
         <td>{filteredData.looses}</td>
         <td>{filteredData.score}</td>
@@ -121,7 +135,7 @@ const Leaderboard = () => {
             <>
               {users.avatar? 
               <td className='avatarLeaderboard'>
-                <img className='' src={users.avatar}/>
+                <img src={users.avatar}/>
               </td>
       
               :
@@ -131,9 +145,11 @@ const Leaderboard = () => {
               
 
               }
+
+              
               
             </>
-            <td>{users.googleUserName}</td>
+            <td>{users.googleUserName.split(' ').slice(0, 2).join(' ')}</td>
             <td>{users.wins}</td>
             <td>{users.looses}</td>
             <td>{users.score}</td>

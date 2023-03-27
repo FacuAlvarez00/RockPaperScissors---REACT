@@ -10,7 +10,7 @@ import { getOrderScore } from '../../firebase'
 const UserInfoDisplay = () => {
 
 
-    const {user, points, setPoints , userAvatar, setUserAvatar, setAvatarReceived, avatarOption, avatarFromDB, setAvatarFromDB} = UserAuth()
+    const {user, points, setPoints , setAvatarReceived, avatarFromDB, setAvatarFromDB} = UserAuth()
     
     
 
@@ -23,19 +23,24 @@ const UserInfoDisplay = () => {
           );
             setAvatarFromDB(avatarFromDatabase)
             setPoints(scoreFromDatabase);
-            
-          
-       
         } catch (error) {
-          console.log("error");
+    
         }
       }
         fetchData();
         setAvatarReceived(true);
+        
        
     }, [user]);
 
+
+
+  
     
+
+  const maxNameWords = 2;
+  const trimmedName = user?.displayName ? user.displayName.split(' ').slice(0, maxNameWords).join(' ') : '';
+ 
 
   return (
    
@@ -53,7 +58,7 @@ const UserInfoDisplay = () => {
 
         <div className='textboxNavbar'>
             {user?
-            <span>{user.displayName}</span>
+            <span>{trimmedName}</span>
             :
             <span>GUEST</span>
             }

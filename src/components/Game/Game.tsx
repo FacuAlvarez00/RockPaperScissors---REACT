@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import "./game.css"
 import Header from '../Header/Header';
 import { UserAuth } from '../../context/AuthContext';
-import { createOrder, getOrderScore } from '../../firebase';
+import { createOrder, getOrderScore, updateScore } from '../../firebase';
 
 
 
@@ -39,7 +39,6 @@ type props = {
 
 
 
-
 const Game: React.FC<props> = ({ myChoice }) => {
 
 
@@ -48,28 +47,12 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
- 
-    const [disabled, setDisabled] = useState<any>(true);
     const [counter, setCounter] = useState(3);
 
 
     const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost, userAvatar} = UserAuth()
     
-    
 
-  /*   async function enableScore(){
-        const { userAlreadyPlayed, scoreFromDatabase } = await getOrderScore(user.uid);
-        setUserAlreadyPlayed(userAlreadyPlayed);
-        setPoints(scoreFromDatabase);
-        if (userAlreadyPlayed){
-            setPoints(scoreFromDatabase);
-        }
-        else{
-            setPoints(pointsAtZero)
-        }
-      }
- */
- 
 
     const newHousePick = () => {
     setComputerChoice(choices[Math.floor(Math.random() * choices.length)]);
@@ -77,19 +60,18 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
     function sendInfo() {
         const order = {
-
             userinfo: user?.uid,
             googleUserName: user?.displayName,
             score: points,
             looses: timesLost,
             wins: timesWon,
-            avatar: userAvatar,
             date: new Date(),
           };
         createOrder(order)
-        /* console.log("pusheado a db") */
+        console.log("data")
+        
     }
-
+    
     
     
 
@@ -104,7 +86,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
       }, [])
    
         const winnerCheck = () => {
-            setDisabled(false)
+           
             if (
                 (myChoice.type === "Rock" && computerChoice.type === "Scissors") ||
                 (myChoice.type === "Paper" && computerChoice.type === "Rock") ||
@@ -135,16 +117,18 @@ const Game: React.FC<props> = ({ myChoice }) => {
                 : winnerCheck()
                 
                 
+                
         
             return () => {
               clearInterval(timer);
             };
           }, [counter, computerChoice]);
+          
 
          useEffect(() => {
             sendInfo()
           }, [points]); 
-        
+         
         
 
     return (
@@ -152,8 +136,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
  
             <div className='containerGame'>
-                {/* <Header points={points}/> */}
-
+    
 
                
                 <div className='chosesContainer'>

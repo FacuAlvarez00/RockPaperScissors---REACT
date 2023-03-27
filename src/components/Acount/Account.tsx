@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { UserAuth } from '../../context/AuthContext'
-import { createOrder, getUserInfo } from '../../firebase'
+import { createOrder, getUserInfo, updateAvatar } from '../../firebase'
 import avatar from "../../assets/avatars/avatar-svgrepo-com.svg"
 import avatar2 from "../../assets/avatars/avatar-svgrepo-com(1).svg"
 import avatar3 from "../../assets/avatars/avatar-svgrepo-com(2).svg"
@@ -36,7 +36,7 @@ const Account = () => {
 
   /* const [avatarReceived, setAvatarReceived] = useState<boolean>() */
 
-  console.log(userAvatar)
+
 
 
 
@@ -54,51 +54,52 @@ const Account = () => {
       userdata.userinfo === user.uid
     );
   })
+
   function setAvatar(avatar: any) {
     setUserAvatar(avatar);
   }
 
   function sendAvatar() {
-    const order = {
-      userinfo: user?.uid,
-      googleUserName: user?.displayName,
-      score: points,
-      looses: timesLost,
-      wins: timesWon,
-      avatar: userAvatar,
-      date: new Date(),
-
-
-    };
-    createOrder(order).then(() => {
-      setAvatarFromDB(userAvatar);
-    });
-
-
-
+    try {
+      const order = {
+        userinfo: user?.uid,
+        googleUserName: user?.displayName,
+        avatar: userAvatar,
+        date: new Date(),
+      };
+      updateAvatar(order).then(() => {
+        setAvatarFromDB(userAvatar);
+      });
+    } catch  {
+      console.error("Ocurrió un error al enviar el avatar: ");
+    }
   }
 
 
+  const maxNameWords = 2
+  const nameWords = user.displayName.split(' ');
+  const trimmedName = nameWords.slice(0, maxNameWords).join(' ');
+ 
 
 
   return (
     <>
 
-          <div className='btnAccount'>
-            <button onClick={handleSignOut}>Log Out</button>
-          </div>
+      <div className='btnAccount'>
+        <button onClick={handleSignOut}>Log Out</button>
+      </div>
 
       <section className='account'>
-      
+
 
 
         <div className='accountPanel'>
 
-        
+
+    
 
 
-
-          {user && userInfo ?
+          {user && userInfo?
             <>
 
 
@@ -113,11 +114,35 @@ const Account = () => {
 
 
                 </div>
-                <h1 className='greetingsTitle'>Welcome back,<br></br> {user.displayName}</h1>
+                <h1 className='greetingsTitle'>Welcome back,<br></br>{trimmedName}</h1>
                 <div className='accountData'>
-                  <p>Your current points are: {points}</p>
-                  <p>You won: {data[0].wins} times</p>
-                  <p>You lost: {data[0].looses} times</p>
+
+                  {points?
+                  <>
+                    <p>Your current points are: {points}</p>
+                    <p>You won: {data[0].wins} times</p>
+                    <p>You lost: {data[0].looses} times</p>
+                  </>
+        
+                  :
+
+                  <>
+                    <p>Your current points are:</p>
+                    <p>You won: times</p>
+                    <p>You lost: times</p>
+                  </>
+                 
+
+                  }
+                   
+                   
+
+                    
+                    
+                    
+                 
+
+
 
                 </div>
 
@@ -137,8 +162,8 @@ const Account = () => {
           }
 
 
-          <section className='userPanel'>
-            <p>CHOOSE YOUR AVATAR</p>
+          <div className='userPanel'>
+            <p className='avatarPanelTitle'>CHOOSE YOUR AVATAR</p>
             <div>
 
 
@@ -152,10 +177,19 @@ const Account = () => {
               }
 
             </div>
-
+            {points?
             <button onClick={sendAvatar}>Save changes</button>
+            :
+            <>
+              <button disabled={true}>Save changes</button>
+              <p className='disabledButtonText'>You have to play at least one game<br/>
+              before choosing an avatar.</p>
+            </>
+         
+            }
+            
 
-          </section>
+          </div>
 
 
         </div>

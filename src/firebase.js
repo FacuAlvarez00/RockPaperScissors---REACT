@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import {getFirestore, doc, setDoc, collection, addDoc, getDoc, getDocs} from "firebase/firestore"
+import {getFirestore, doc, setDoc, collection, addDoc, getDoc, getDocs, updateDoc} from "firebase/firestore"
 import { UserAuth } from "./context/AuthContext";
 
 
@@ -58,23 +58,19 @@ export async function createOrder(order) {
   const orderRef = doc(db, "order", order.userinfo);
   let respuesta = await setDoc(orderRef, order);
   return respuesta
-
 }
-/* export async function createOrder(order) {
+export async function updateScore(order) {
   const orderRef = doc(db, "order", order.userinfo);
+  let respuesta = await updateDoc(orderRef, order);
+  return respuesta
+}
+export async function updateAvatar(order) {
+  const orderRef = doc(db, "order", order.userinfo);
+  let respuesta = await updateDoc(orderRef, order);
+  return respuesta
+}
 
-  let respuesta = await setDoc(orderRef, order);
-  console.log(respuesta, respuesta.id);
 
-  return respuesta.id;
-} */
-/* 
-export async function getUserInfo(){
-  const productsRef = collection(db, "order")
-  const docRef = doc(productsRef)
-  const snapshot = await getDoc(docRef)
-  return { ...snapshot.data() }
-} */
 
 export async function getUserInfo(){
   const productsRef = collection(db, "order")
