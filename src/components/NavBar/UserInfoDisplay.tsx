@@ -18,7 +18,7 @@ const UserInfoDisplay = () => {
     useEffect(() => {
       async function fetchData() {
         try {
-          const { avatarFromDatabase, scoreFromDatabase } = await getOrderScore(
+          const { avatarFromDatabase, scoreFromDatabase, userPlayedOnce } = await getOrderScore(
             user.uid
           );
             setAvatarFromDB(avatarFromDatabase)

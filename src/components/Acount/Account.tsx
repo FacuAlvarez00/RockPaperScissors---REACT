@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { UserAuth } from '../../context/AuthContext'
-import { createOrder, getUserInfo, updateAvatar } from '../../firebase'
+import { createOrder, getUserInfo, updateAvatar, getOrderScore } from '../../firebase'
 import avatar from "../../assets/avatars/avatar-svgrepo-com.svg"
 import avatar2 from "../../assets/avatars/avatar-svgrepo-com(1).svg"
 import avatar3 from "../../assets/avatars/avatar-svgrepo-com(2).svg"
-import avatar4 from "../../assets/avatars/avatar-svgrepo-com(3).svg"
+import avatar4 from "../../assets/avatars/avatar-svgrepo-com(5).svg"
 import avatar5 from "../../assets/avatars/avatar-svgrepo-com(4).svg"
-import avatar6 from "../../assets/avatars/avatar-svgrepo-com(5).svg"
+import avatar6 from "../../assets/avatars/avatar-svgrepo-com(3).svg"
 import avatar7 from "../../assets/avatars/avatar-svgrepo-com(6).svg"
+import avatar9 from "../../assets/avatars/avatar-svgrepo-com(8).svg"
+import avatar10 from "../../assets/avatars/avatar-svgrepo-com(9).svg"
+import avatar11 from "../../assets/avatars/avatar-svgrepo-com(10).svg"
+
+
+
 import { ColorRing } from 'react-loader-spinner'
 import "./account.css"
 
@@ -19,7 +25,10 @@ const avatars = [
   avatar4,
   avatar5,
   avatar6,
-  avatar7
+  avatar7,
+  avatar9,
+  avatar10,
+  avatar11
 ]
 
 
@@ -28,13 +37,14 @@ const avatars = [
 const Account = () => {
 
   const { user, handleSignOut, points, timesWon, timesLost, userAvatar, setUserAvatar, avatarOption,
-    setAvatarOption, avatarFromDB, setAvatarFromDB } = UserAuth()
+    setAvatarOption, avatarFromDB, setAvatarFromDB, setPlayedonce, playedonce } = UserAuth()
 
 
   const [userInfo, setUserInfo] = useState<any>()
+  
 
 
-  /* const [avatarReceived, setAvatarReceived] = useState<boolean>() */
+
 
 
 
@@ -47,6 +57,22 @@ const Account = () => {
     }
     fetchData();
   }, [points]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const { userPlayedOnce } = await getOrderScore(
+          user.uid
+        );
+        setPlayedonce(userPlayedOnce)
+      } catch (error) {
+  
+      }
+    }
+      fetchData();
+      
+  }, []);
+
 
 
   const data = userInfo?.filter((userdata: any) => {
@@ -80,7 +106,6 @@ const Account = () => {
   const nameWords = user.displayName.split(' ');
   const trimmedName = nameWords.slice(0, maxNameWords).join(' ');
  
-
 
   return (
     <>
@@ -131,18 +156,7 @@ const Account = () => {
                     <p>You won: times</p>
                     <p>You lost: times</p>
                   </>
-                 
-
-                  }
-                   
-                   
-
-                    
-                    
-                    
-                 
-
-
+                }
 
                 </div>
 
@@ -177,7 +191,7 @@ const Account = () => {
               }
 
             </div>
-            {points?
+            {playedonce?
             <button onClick={sendAvatar}>Save changes</button>
             :
             <>

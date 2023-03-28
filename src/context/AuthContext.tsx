@@ -23,6 +23,8 @@ interface IAuthContext {
   avatarReceived: any
   avatarFromDB: any
   setAvatarFromDB: any
+  playedonce: any
+  setPlayedonce: any
 
 }
 
@@ -45,6 +47,7 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
   const [avatarOption, setAvatarOption] = useState<any>()
   const [avatarReceived, setAvatarReceived] = useState<boolean>()
   const [avatarFromDB, setAvatarFromDB] = useState<any>()
+  const [playedonce, setPlayedonce] = useState<boolean>()
 
 
  
@@ -117,7 +120,8 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
 
 
     return <AuthContext.Provider value={{ googleSignIn, logOut, user, handleSignOut, points, setPoints, timesLost, setTimesLost, timesWon, setTimesWon, userAvatar, setUserAvatar , avatarOption, setAvatarOption,
-    setAvatarReceived, avatarReceived, avatarFromDB, setAvatarFromDB }}>{children}</AuthContext.Provider>;
+    setAvatarReceived, avatarReceived, avatarFromDB, setAvatarFromDB, playedonce
+  , setPlayedonce }}>{children}</AuthContext.Provider>;
 };
 
 export const UserAuth = () => {

@@ -1,16 +1,13 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import {getFirestore, doc, setDoc, collection, addDoc, getDoc, getDocs, updateDoc} from "firebase/firestore"
-import { UserAuth } from "./context/AuthContext";
+import {getFirestore, doc, setDoc, collection, getDoc, getDocs, updateDoc} from "firebase/firestore"
 
 
 
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyB2jvGWVsO7_omVa6XOaQO2VgLhTTmwgos",
   authDomain: "rockpaperscissors-25e4d.firebaseapp.com",
@@ -20,36 +17,38 @@ const firebaseConfig = {
   appId: "1:211617757699:web:395587e746874f53e4ec36"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app)
 
 
 export async function getOrderScore(uid) {
-  const orderRef = doc(db, "order", uid); // referencia al documento con el UID especificado
+  const orderRef = doc(db, "order", uid); 
 
-  const docSnap = await getDoc(orderRef); // obtener el documento
+  const docSnap = await getDoc(orderRef); 
 
   let userAlreadyPlayed = false;
   let scoreFromDatabase = null;
   let winsFromDatabase = null
   let loosesFromDatabase = null
   let avatarFromDatabase = null
+  let userPlayedOnce = null
 
-  if (docSnap.exists()) { // verificar si el documento existe
+  if (docSnap.exists()) {
     userAlreadyPlayed = true;
-    scoreFromDatabase = docSnap.data().score; // devolver el valor de la propiedad "score"
+    scoreFromDatabase = docSnap.data().score; 
     winsFromDatabase = docSnap.data().wins
     loosesFromDatabase = docSnap.data().looses
     avatarFromDatabase = docSnap.data().avatar
+    userPlayedOnce = docSnap.data().alreadyPlayed
   } 
   return {
     userAlreadyPlayed,
     scoreFromDatabase,
     winsFromDatabase,
     loosesFromDatabase,
-    avatarFromDatabase
+    avatarFromDatabase,
+    userPlayedOnce
   };
   
 }
@@ -69,7 +68,6 @@ export async function updateAvatar(order) {
   let respuesta = await updateDoc(orderRef, order);
   return respuesta
 }
-
 
 
 export async function getUserInfo(){

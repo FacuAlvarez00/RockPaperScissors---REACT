@@ -11,14 +11,43 @@
     margin-bottom: 30px;
 }
 .aboutContainer p{
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
-    
 }
 .githubAbout{
     color: rgb(228, 169, 20);
     text-decoration: none;
+    font-style: italic;
 }
 .githubAbout:hover{
     color: rgba(255, 255, 255, 0.747);
+}
+.textboxAbout p:nth-child(1){
+    margin-bottom: 10px;
+}
+.textboxAbout p:nth-child(2){
+    margin-bottom: 10px;
+}
+.textboxAbout p:nth-child(3){
+    margin-bottom: 10px;
+}
+.textboxAbout p:nth-child(4){
+    margin-top: 15px;
+}
+
+
+
+@media only screen and (min-width: 1000px) {
+    .aboutContainer{
+        display: block;
+        margin: auto;
+        width: 1000px;
+    }
+
+    .aboutContainer p{
+        font-size: 22px;
+        text-align: center;
+    }
+
+
 }

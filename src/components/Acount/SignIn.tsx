@@ -54,7 +54,7 @@ const SignIn = () => {
 
   <div className="plan">
  
-    <div className="plan-cost"><span className="plan-price">GUEST</span>{/* <span className="plan-type">/ Monthly</span> */}</div>
+    <div className="plan-cost"><span className="plan-price">GUEST</span></div>
     <ul className="plan-features">
         <li>
             <TiTick className='tickLogo'/>  Access to the game
@@ -83,7 +83,7 @@ const SignIn = () => {
 
     <div className="plan">
  
-    <div className="plan-cost"><span className="plan-price">SIGNED IN</span>{/* <span className="plan-type">/ Monthly</span> */}</div>
+    <div className="plan-cost"><span className="plan-price">SIGNED IN</span></div>
     <ul className="plan-features">
     <li>
             <TiTick className='tickLogo'/>  Access to the game

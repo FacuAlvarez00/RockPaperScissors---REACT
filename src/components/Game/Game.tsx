@@ -7,6 +7,7 @@ import "./game.css"
 import Header from '../Header/Header';
 import { UserAuth } from '../../context/AuthContext';
 import { createOrder, getOrderScore, updateScore } from '../../firebase';
+import { MdDashboard } from 'react-icons/md';
 
 
 
@@ -48,9 +49,11 @@ const Game: React.FC<props> = ({ myChoice }) => {
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
     const [counter, setCounter] = useState(3);
+    
 
 
-    const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost, userAvatar} = UserAuth()
+    const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost,
+        playedonce, setPlayedonce} = UserAuth()
     
 
 
@@ -65,14 +68,16 @@ const Game: React.FC<props> = ({ myChoice }) => {
             score: points,
             looses: timesLost,
             wins: timesWon,
+            alreadyPlayed: playedonce,
             date: new Date(),
+
           };
         createOrder(order)
         console.log("data")
         
     }
     
-    
+    console.log(playedonce)
     
 
 
@@ -93,14 +98,18 @@ const Game: React.FC<props> = ({ myChoice }) => {
                 (myChoice.type === "Scissors" && computerChoice.type === "Paper")
             ) {
                 setResult('YOU WON');
-                setPoints(points + 1); 
+                setPoints(points + 1);
                 setTimesWon(timesWon + 1)
+                setPlayedonce(true)
             } else if (myChoice.id === computerChoice.id) {
                 setResult('DRAW');
+                setPlayedonce(true)
+
             } else {
                 setResult('YOU LOST');
-                setPoints(points - 1);
+                setPoints(points - 1); 
                 setTimesLost(timesLost + 1)
+                setPlayedonce(true)
     
             }
         };
@@ -112,7 +121,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
               counter > 0 ? 
 
-              setInterval(() => {setCounter(counter - 1);}, 1000)
+              setInterval(() => {setCounter(counter - 1);}, 500)
               
                 : winnerCheck()
                 
@@ -127,7 +136,7 @@ const Game: React.FC<props> = ({ myChoice }) => {
 
          useEffect(() => {
             sendInfo()
-          }, [points]); 
+          }, [result]); 
          
         
 
