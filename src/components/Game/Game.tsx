@@ -7,7 +7,6 @@ import "./game.css"
 import Header from '../Header/Header';
 import { UserAuth } from '../../context/AuthContext';
 import { createOrder, getOrderScore, updateScore } from '../../firebase';
-import { MdDashboard } from 'react-icons/md';
 
 
 
@@ -49,10 +48,9 @@ const Game: React.FC<props> = ({ myChoice }) => {
     const [computerChoice, setComputerChoice] = useState<any>();
     const [result, setResult] = useState<any>(null);
     const [counter, setCounter] = useState(3);
-    
 
 
-    const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost,
+    const {user, points, setPoints, timesWon, setTimesWon, timesLost, setTimesLost, userAvatar,
         playedonce, setPlayedonce} = UserAuth()
     
 
@@ -68,16 +66,16 @@ const Game: React.FC<props> = ({ myChoice }) => {
             score: points,
             looses: timesLost,
             wins: timesWon,
-            alreadyPlayed: playedonce,
+            avatar: userAvatar,
+            userPlayedOnce: playedonce,
             date: new Date(),
-
           };
         createOrder(order)
         console.log("data")
         
     }
     
-    console.log(playedonce)
+    
     
 
 
@@ -104,10 +102,10 @@ const Game: React.FC<props> = ({ myChoice }) => {
             } else if (myChoice.id === computerChoice.id) {
                 setResult('DRAW');
                 setPlayedonce(true)
-
+                setPoints(points + 0); 
             } else {
                 setResult('YOU LOST');
-                setPoints(points - 1); 
+                setPoints(points - 1);  
                 setTimesLost(timesLost + 1)
                 setPlayedonce(true)
     

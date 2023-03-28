@@ -18,7 +18,7 @@ const UserInfoDisplay = () => {
     useEffect(() => {
       async function fetchData() {
         try {
-          const { avatarFromDatabase, scoreFromDatabase, userPlayedOnce } = await getOrderScore(
+          const { avatarFromDatabase, scoreFromDatabase } = await getOrderScore(
             user.uid
           );
             setAvatarFromDB(avatarFromDatabase)
@@ -63,14 +63,12 @@ const UserInfoDisplay = () => {
             <span>GUEST</span>
             }
 
-            {points === 0?
-            <span >SCORE </span>
-            :
+            
             <span >SCORE <span className='scoreNavbar'>{points}</span></span>
             
 
             
-            }
+            
         </div>
       
     </div>

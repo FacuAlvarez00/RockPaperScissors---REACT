@@ -29,7 +29,7 @@ const About = () => {
         </p>
         <p>
           <a target="_blank" href="https://github.com/FacuAlvarez00">
-            <span className='githubAbout'> For any inquires, proposals or messages, reach at my  <SiGithub />. </span>
+            <span className='githubAbout'> For any inquires, proposals or messages, reach me at  <SiGithub className='githubLogo' />. </span>
           </a>
 
 

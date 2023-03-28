@@ -116,7 +116,7 @@ export const AuthContextProvider = ({ children }: IAuthContextProviderProps) => 
 
     
 
-
+   
 
 
     return <AuthContext.Provider value={{ googleSignIn, logOut, user, handleSignOut, points, setPoints, timesLost, setTimesLost, timesWon, setTimesWon, userAvatar, setUserAvatar , avatarOption, setAvatarOption,

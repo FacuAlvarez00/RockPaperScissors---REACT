@@ -37,11 +37,11 @@ const avatars = [
 const Account = () => {
 
   const { user, handleSignOut, points, timesWon, timesLost, userAvatar, setUserAvatar, avatarOption,
-    setAvatarOption, avatarFromDB, setAvatarFromDB, setPlayedonce, playedonce } = UserAuth()
+    setAvatarOption, avatarFromDB, setAvatarFromDB, playedonce, setPlayedonce } = UserAuth()
 
 
   const [userInfo, setUserInfo] = useState<any>()
-  
+
 
 
 
@@ -61,10 +61,11 @@ const Account = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const { userPlayedOnce } = await getOrderScore(
+        const { playedonceFromDatabase } = await getOrderScore(
           user.uid
         );
-        setPlayedonce(userPlayedOnce)
+        setPlayedonce(playedonceFromDatabase)
+        
       } catch (error) {
   
       }
@@ -73,6 +74,8 @@ const Account = () => {
       
   }, []);
 
+
+  
 
 
   const data = userInfo?.filter((userdata: any) => {
@@ -100,7 +103,7 @@ const Account = () => {
       console.error("Ocurrió un error al enviar el avatar: ");
     }
   }
-
+  
 
   const maxNameWords = 2
   const nameWords = user.displayName.split(' ');
@@ -191,7 +194,7 @@ const Account = () => {
               }
 
             </div>
-            {playedonce?
+            {playedonce? 
             <button onClick={sendAvatar}>Save changes</button>
             :
             <>
@@ -202,6 +205,7 @@ const Account = () => {
          
             }
             
+        
 
           </div>
 

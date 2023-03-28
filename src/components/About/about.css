@@ -1,6 +1,6 @@
 .aboutContainer{
 
-    margin-top: 20px;
+    margin-top: 100px;
     color: white;
     padding: 0 30px;
     
@@ -33,6 +33,9 @@
 }
 .textboxAbout p:nth-child(4){
     margin-top: 15px;
+}
+.githubLogo{
+    margin-left: 5px;
 }
 
 

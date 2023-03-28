@@ -32,7 +32,7 @@ export async function getOrderScore(uid) {
   let winsFromDatabase = null
   let loosesFromDatabase = null
   let avatarFromDatabase = null
-  let userPlayedOnce = null
+  let playedonceFromDatabase = null
 
   if (docSnap.exists()) {
     userAlreadyPlayed = true;
@@ -40,7 +40,7 @@ export async function getOrderScore(uid) {
     winsFromDatabase = docSnap.data().wins
     loosesFromDatabase = docSnap.data().looses
     avatarFromDatabase = docSnap.data().avatar
-    userPlayedOnce = docSnap.data().alreadyPlayed
+    playedonceFromDatabase = docSnap.data().userPlayedOnce
   } 
   return {
     userAlreadyPlayed,
@@ -48,7 +48,7 @@ export async function getOrderScore(uid) {
     winsFromDatabase,
     loosesFromDatabase,
     avatarFromDatabase,
-    userPlayedOnce
+    playedonceFromDatabase
   };
   
 }
