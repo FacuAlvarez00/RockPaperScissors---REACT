@@ -45,57 +45,53 @@ const Options: React.FC<props> = ({ setMyChoice }) => {
 
   return (
     <>
-
       <div className='options_container'>
         <h1 className='titleOptions'>CHOOSE YOUR OPTION</h1>
         <div className='triangleContainer'>
-          <img className="triangle" src={triangle} />
+          <img className="triangle" src={triangle} alt="Triangle" />
         </div>
-
 
         <div className='items'>
-
           <div className='topContainer'>
-
-            <div className='circle circle2-container'
-              onClick={() => setMyChoice(choices[1])}>
               <Link to="/game">
-                <img className='icons circle2' src={paper}></img>
-              </Link>
+            <div className='circle circle2-container'>
+                <img
+                  className='icons circle2'
+                  src={paper}
+                  alt="Paper"
+                  onClick={() => setChoice(choices[1])}
+                />
             </div>
+              </Link>
 
-            <div className='circle circle3-container'
-              onClick={() => setMyChoice(choices[2])}>
               <Link to="/game">
-                <img className='icons circle3' src={scissors}></img>
-              </Link>
+            <div className='circle circle3-container'>
+                <img
+                  className='icons circle3'
+                  src={scissors}
+                  alt="Scissors"
+                  onClick={() => setChoice(choices[2])}
+                />
             </div>
-
+              </Link>
           </div>
 
+              <Link to="/game">
           <div className='bottomCircle'>
-
-            <div className='circle circle1-container'
-              onClick={() => setMyChoice(choices[0])}>
-              <Link to="/game">
-                <img className='icons circle1' src={rock}></img>
-              </Link>
+            <div className='circle circle1-container'>
+                <img
+                  className='icons circle1'
+                  src={rock}
+                  alt="Rock"
+                  onClick={() => setChoice(choices[0])}
+                />
             </div>
-
           </div>
-
+              </Link>
         </div>
-
-
-
-
-
       </div>
-
-
-
     </>
-  )
-}
+  );
+};
 
 export default Options

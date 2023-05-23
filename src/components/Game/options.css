@@ -60,19 +60,28 @@
   .circle1-container {
     box-shadow: inset 0 5px 6px grey, 0 8px #C05299;
     border: 10px solid #EA698B;
- 
+    transition: 0.3s;
+  }
+  .circle1-container:hover{
+    scale: 110%;
   }
   
   .circle2-container {
     box-shadow: inset 0 5px 6px grey, 0 8px #C05299;
     border: 10px solid #EA698B;
-    
+    transition: 0.3s;
+  }
+  .circle2-container:hover{
+    scale: 110%;
   }
   
   .circle3-container {
     box-shadow: inset 0 5px 6px grey, 0 8px #C05299;
     border: 10px solid #EA698B;
-   
+    transition: 0.3s;
+  }
+  .circle3-container:hover{
+    scale: 110%;
   }
   
  
